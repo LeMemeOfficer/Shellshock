@@ -39,7 +39,6 @@ function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyR
     ctx.lineTo(edge3[0],edge3[1]);
     ctx.lineTo(edge4[0],edge4[1])
     ctx.fill();
-    this.angle += 5;
   }
 
   this.newPos = function()
