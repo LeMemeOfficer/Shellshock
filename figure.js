@@ -1,9 +1,7 @@
-function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyRight, id)
+function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
 {
   //Controls
-  this.keyUp = keyUp
   this.keyLeft = keyLeft
-  this.keyDown = keyDown
   this.keyRight = keyRight
 
   //Appearence
@@ -29,7 +27,6 @@ function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyR
     var edge3 = getNextEdge(edge2, this.height, this.angle, 1)
     var edge4 = getNextEdge(edge3, this.width, this.angle, 2)
 
-
     ctx = myGameArea.context;
     ctx.fillStyle = color;
 
@@ -41,8 +38,9 @@ function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyR
     ctx.fill();
   }
 
-  this.newPos = function()
+  this.newPos = function(groundHeight)
   {
+
     //Check if player is in boundaries of canvas
     if(inBetween(this.x + this.speedX, 0, myGameArea.canvas.width - this.width))
     {
@@ -50,18 +48,11 @@ function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyR
     };
 
     //Check if player is in boundaries of canvas
-    if(inBetween(this.y + this.speedY, 0, myGameArea.canvas.height - this.height))
-    {
-      this.y += this.speedY;
-    };
+    this.y = CANVAS_HEIGHT - groundHeight * 2;
+    console.log(groundHeight);
   }
 
   //Movement
-  this.moveVertical = function(speed)
-  {
-    this.speedY = speed;
-  }
-
   this.moveHorizontal = function(speed)
   {
     this.speedX = speed;
@@ -70,10 +61,5 @@ function figure(width, height, angle, color, x, y, keyUp, keyLeft, keyDown, keyR
   this.stopHorizontal = function()
   {
     this.speedX = 0;
-  }
-
-  this.stopVertical = function()
-  {
-    this.speedY = 0;
   }
 }

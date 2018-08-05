@@ -24,7 +24,7 @@ function ground()
     this.currenHeight = this.lastHeight;
 
     //Roughly creating Terrian
-    for(i = 0; i <= 500; i++)
+    for(i = 0; i <= CANVAS_WIDTH / 2; i++)
     {
       this.currenHeight = getNextHeight(this.lastHeight, this.currenHeight - this.lastHeight);
       this.buffer = [];

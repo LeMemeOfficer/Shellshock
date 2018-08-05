@@ -18,8 +18,8 @@ var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
 
-var players = [new figure(25, 18, 0, "red", 60, 120, 87, 65, 83, 68, 1),
-               new figure(25, 18, 0,"blue", CANVAS_WIDTH - 60, 120, 104, 100, 101, 102, 2)];
+var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 1),
+               new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 2)];
 var ground = new ground();
 
 function startGame()
@@ -39,7 +39,7 @@ var myGameArea = {
       this.canvas.height = CANVAS_HEIGHT;
       this.context = this.canvas.getContext("2d");
       document.body.insertBefore(this.canvas, document.body.childNodes[0]);
-      this.interval = setInterval(updateGameArea, 5);
+      this.interval = setInterval(updateGameArea, 40);
     },
     clear : function()
     {
@@ -65,7 +65,7 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
-  players.forEach(player => player.newPos());
+  players.forEach(player => player.newPos(ground.groundMatrix[player.x / 2]));
   players.forEach(player => player.update());
 }
 
