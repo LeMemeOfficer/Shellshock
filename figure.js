@@ -42,14 +42,14 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   {
 
     //Check if player is in boundaries of canvas
-    if(inBetween(this.x + this.speedX, 0, myGameArea.canvas.width - this.width))
+    if(inBetween(this.x + this.speedX, 10, myGameArea.canvas.width - 10))
     {
       this.x += this.speedX;
     };
 
     //Check if player is in boundaries of canvas
-    this.y = CANVAS_HEIGHT - groundHeight * 2;
-    console.log(groundHeight);
+    this.y = CANVAS_HEIGHT - groundHeight[0] * 2 - 2;
+    this.angle = calcTilt(groundHeight);
   }
 
   //Movement

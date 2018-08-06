@@ -18,8 +18,8 @@ var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
 
-var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 1),
-               new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 2)];
+var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0),
+               new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1)];
 var ground = new ground();
 
 function startGame()
@@ -65,11 +65,17 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
-  players.forEach(player => player.newPos(ground.groundMatrix[player.x / 2]));
+  players.forEach(player => player.newPos(getPlayerGround(player.id)));
   players.forEach(player => player.update());
 }
 
-
+function getPlayerGround(playerId)
+{
+  groundHeights = [ground.groundMatrix[ players[playerId].x      / 2], //ground heigth at tank center
+                   ground.groundMatrix[(players[playerId].x - 8) / 2], //ground heigth at left offset
+                   ground.groundMatrix[(players[playerId].x + 8) / 2]];//ground heigth at right offset
+  return groundHeights;
+}
 
 </script>
 

@@ -10,3 +10,8 @@ function getNextEdge(coordinates, length, angle, angleModifier)
   var bufferPoint = [pointX, pointY];
   return bufferPoint;
 }
+
+function calcTilt(surrHeights)
+{
+  return (Math.atan((surrHeights[1] - surrHeights[2]) / 8, 16) * 180 / Math.PI);
+}
