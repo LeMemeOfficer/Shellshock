@@ -10,6 +10,7 @@
 <script src="ground.js"></script>
 <script src="groundHelpers.js"></script>
 <script src="helpers.js"></script>
+<script src="bulletPath.js"></script>
 <script src="keyboardControls.js"></script>
 <script src="keyboardControlsHelper.js"></script>
 <script>
@@ -21,6 +22,7 @@ var CANVAS_WIDTH = 1000;
 var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0),
                new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1)];
 var ground = new ground();
+var mousePosition = [0, 0];
 
 function startGame()
 {
@@ -37,6 +39,7 @@ var myGameArea = {
     {
       this.canvas.width = CANVAS_WIDTH;
       this.canvas.height = CANVAS_HEIGHT;
+      this.canvas.id = "gameArea"
       this.context = this.canvas.getContext("2d");
       document.body.insertBefore(this.canvas, document.body.childNodes[0]);
       this.interval = setInterval(updateGameArea, 40);
@@ -67,6 +70,7 @@ function updateGameArea()
   myGameArea.clear();
   players.forEach(player => player.newPos(getPlayerGround(player.id)));
   players.forEach(player => player.update());
+  players.forEach(player => drawBulletPath(player));
 }
 
 function getPlayerGround(playerId)

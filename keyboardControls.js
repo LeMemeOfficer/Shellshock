@@ -18,3 +18,11 @@ document.addEventListener('keyup', function(event)
 
   players.forEach(player => processStopConditions(player, event.keyCode));
 });
+
+document.addEventListener('mousemove', function(event)
+{
+  var rect = document.getElementById('gameArea').getBoundingClientRect();
+  mousePosition[0] = event.clientX - rect.left;
+  mousePosition[1] = event.clientY - rect.top;
+  console.log(mousePosition);
+});
