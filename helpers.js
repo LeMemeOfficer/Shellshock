@@ -16,3 +16,15 @@ function getRandomNear(number, variance)
 {
   return getRandomInt(number - variance, number + variance);
 }
+
+function getNextPlayer()
+{
+  if(activePlayer < players.length - 1)
+  {
+    activePlayer++;
+  }
+  else
+  {
+    activePlayer = 0;
+  }
+}

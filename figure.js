@@ -1,3 +1,7 @@
+//--------------------PARAMETER--------------------
+var MAX_MOVEMENT = 50;
+//--------------------PARAMETER--------------------
+
 function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
 {
   //Controls
@@ -18,6 +22,9 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
 
   //Identification
   this.id = id;
+
+  //Game logic
+  this.movementCounter = 0;
 
   //Draw on Canvas
   this.update = function()
@@ -55,7 +62,19 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   //Movement
   this.moveHorizontal = function(speed)
   {
-    this.speedX = speed;
+
+
+    if(this.movementCounter < MAX_MOVEMENT)
+    {
+      this.speedX = speed;
+      this.movementCounter++;
+      console.log(this.movementCounter);
+    }
+    else
+    {
+      this.movementCounter = 0;
+      getNextPlayer()
+    }
   }
 
   this.stopHorizontal = function()

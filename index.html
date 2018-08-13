@@ -23,6 +23,7 @@ var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0),
                new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1)];
 var ground = new ground();
 var mousePosition = [0, 0];
+var activePlayer = 0;
 
 function startGame()
 {
@@ -68,9 +69,9 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
-  players.forEach(player => player.newPos(getPlayerGround(player.id)));
+  players[activePlayer].newPos(getPlayerGround(activePlayer));
   players.forEach(player => player.update());
-  players.forEach(player => drawBulletPath(player));
+  drawBulletPath(players[activePlayer]);
 }
 
 function getPlayerGround(playerId)
