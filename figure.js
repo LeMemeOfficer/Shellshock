@@ -54,8 +54,8 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
       this.x += this.speedX;
     };
 
-    //Check if player is in boundaries of canvas
-    this.y = CANVAS_HEIGHT - groundHeight[0] * 2 - 2;
+    //Set set player on ground
+    this.y = CANVAS_HEIGHT - groundHeight[0] - 2;
     this.angle = calcTilt(groundHeight);
   }
 

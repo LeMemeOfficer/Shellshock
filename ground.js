@@ -2,6 +2,11 @@ function ground()
 {
   this.groundMatrix = [];
 
+  this.clearGround = function()
+  {
+    this.canvas.getContext("2d").clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+  }
+
   this.drawGround = function()
   {
     ctx = groundCanvas.context;
@@ -12,7 +17,7 @@ function ground()
     ctx.lineTo(0, groundCanvas.canvas.height);
     for(i = 0; i < this.groundMatrix.length; i++)
     {
-      ctx.lineTo(i * 2, groundCanvas.canvas.height - (this.groundMatrix[i] - 1) * 2);
+      ctx.lineTo(i * 2, groundCanvas.canvas.height - (this.groundMatrix[i] - 1));
     }
 
     ctx.fill();
@@ -20,7 +25,7 @@ function ground()
 
   this.createGroundMatrix = function()
   {
-    this.lastHeight = 150;
+    this.lastHeight = 300;
     this.currenHeight = this.lastHeight;
 
     //Roughly creating Terrian

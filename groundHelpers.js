@@ -1,5 +1,5 @@
 //--------------------PARAMETER--------------------
-var MAX_VARIANCE_CHANGE = 1;
+var MAX_VARIANCE_CHANGE = 2;
 //--------------------PARAMETER--------------------
 
 function getNextHeight(lastHeight, lastVariance)

@@ -20,6 +20,14 @@ document.addEventListener('keyup', function(event)
 document.addEventListener('mousemove', function(event)
 {
   var rect = document.getElementById('gameArea').getBoundingClientRect();
-  mousePosition[0] = event.clientX - rect.left;
-  mousePosition[1] = event.clientY - rect.top;
+  mousePosition[0] = event.clientX - rect.left - 2;
+  mousePosition[1] = event.clientY - rect.top - 2;
+});
+
+document.addEventListener('mousedown', function(event)
+{
+  if(event.button == 0)
+  {
+    explosion(mousePosition[0], mousePosition[1], 26);
+  }
 });
