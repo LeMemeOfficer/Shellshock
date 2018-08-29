@@ -32,5 +32,6 @@ document.addEventListener('mousedown', function(event)
       (mousePosition[0] - players[activePlayer].x) / 8,
       (mousePosition[1] - players[activePlayer].y) / 8);
     bulletsArray.push(newBullet);
+    getNextPlayer();
   }
 });

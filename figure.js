@@ -1,5 +1,5 @@
 //--------------------PARAMETER--------------------
-var MAX_MOVEMENT = 50;
+var MAX_MOVEMENT = 25;
 //--------------------PARAMETER--------------------
 
 function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
@@ -62,18 +62,14 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   //Movement
   this.moveHorizontal = function(speed)
   {
-
-
     if(this.movementCounter < MAX_MOVEMENT)
     {
       this.speedX = speed;
       this.movementCounter++;
-      console.log(this.movementCounter);
     }
     else
     {
-      this.movementCounter = 0;
-      getNextPlayer()
+      this.speedX = 0;
     }
   }
 

@@ -19,6 +19,7 @@ function getRandomNear(number, variance)
 
 function getNextPlayer()
 {
+  players[activePlayer].movementCounter = 0
   if(activePlayer < players.length - 1)
   {
     activePlayer++;
