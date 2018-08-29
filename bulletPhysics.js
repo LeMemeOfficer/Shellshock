@@ -1,7 +1,7 @@
 function drawBulletPath(player)
 {
   ctx = myGameArea.context;
-  ctx.fillStyle = "black";
+  ctx.strokeStyle = "gray";
 
   ctx.beginPath();
   ctx.moveTo(player.x, player.y);
@@ -11,6 +11,12 @@ function drawBulletPath(player)
 
 function explosion(xCoord, yCoord, radius)
 {
+  ctx = myGameArea.context;
+  ctx.beginPath();
+  ctx.arc(xCoord, yCoord, 26, 0,2*Math.PI);
+  ctx.fillStyle = "red";
+  ctx.fill();
+
   var inExplosionCounter = 0;
 
   if(xCoord % 2 == 0)

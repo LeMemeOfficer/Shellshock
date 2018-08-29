@@ -28,6 +28,9 @@ document.addEventListener('mousedown', function(event)
 {
   if(event.button == 0)
   {
-    explosion(mousePosition[0], mousePosition[1], 26);
+    newBullet = new bullet(players[activePlayer].x, players[activePlayer].y,
+      (mousePosition[0] - players[activePlayer].x) / 8,
+      (mousePosition[1] - players[activePlayer].y) / 8);
+    bulletsArray.push(newBullet);
   }
 });
