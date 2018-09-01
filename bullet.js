@@ -26,16 +26,11 @@ function bullet(xCoord, yCoord, horizontalSpeed, verticalSpeed)
       bulletsArray = bulletsArray.filter(bullet => bullet.id != this.id);
     }
 
-    this.draw();
+    this.drawBullet();
   }
 
-  this.draw = function()
+  this.drawBullet = function()
   {
-    ctx = myGameArea.context;
-    ctx.fillStyle = "black";
-
-    ctx.beginPath();
-    ctx.arc(this.xPos, this.yPos, 5, 0,2*Math.PI);
-    ctx.fill();
+    drawCircle(myGameArea.context, this.xPos, this.yPos, 5, "black");
   }
 }

@@ -29,3 +29,11 @@ function getNextPlayer()
     activePlayer = 0;
   }
 }
+
+function drawCircle(ctx, xPosition, yPosition, radius, color)
+{
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(xPosition, yPosition, radius, 0,2*Math.PI);
+  ctx.fill();
+}

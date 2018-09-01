@@ -11,13 +11,15 @@ function drawBulletPath(player)
 
 function explosion(xCoord, yCoord, radius)
 {
-  ctx = myGameArea.context;
-  ctx.beginPath();
-  ctx.arc(xCoord, yCoord, 26, 0,2*Math.PI);
-  ctx.fillStyle = "red";
-  ctx.fill();
+  xCoord = Math.floor(xCoord);
+  yCoord = Math.floor(yCoord);
+
+  //draw explosion
+  drawCircle(myGameArea.context, xCoord, yCoord, 26, "red");
 
   var inExplosionCounter = 0;
+  var startPoint;
+  var endPoint;
 
   if(xCoord % 2 == 0)
   {
@@ -30,18 +32,22 @@ function explosion(xCoord, yCoord, radius)
     endPoint = (xCoord + radius -1) / 2;
   }
 
-  for(i = startPoint; i <= endPoint; i++)
+  var xCheckedPos;
+  var yCheckedPos;
+
+  for(xCheckedPos = startPoint; xCheckedPos <= endPoint; xCheckedPos++)
   {
     inExplosionCounter = 0;
-    for(j = CANVAS_HEIGHT; j > ground.groundMatrix[i]; j--)
+    for(yCheckedPos = yCoord + radius + 10; yCheckedPos >= ground.groundMatrix[xCheckedPos]; yCheckedPos--)
     {
-      if(getDistance([xCoord, yCoord],[i * 2, j]) <= radius &&
-         ground.groundMatrix[i] > CANVAS_HEIGHT - j)
+      // if checked Point is in radius reach AND
+      if(getDistance([xCoord, yCoord],[xCheckedPos * 2, yCheckedPos]) <= radius &&
+         ground.groundMatrix[xCheckedPos] >= CANVAS_HEIGHT - yCheckedPos)
       {
         inExplosionCounter++;
       }
     }
-    ground.groundMatrix[i] -= inExplosionCounter;
+    ground.groundMatrix[xCheckedPos] -= inExplosionCounter;
   }
   groundCanvas.clear();
   ground.drawGround();
