@@ -86,7 +86,7 @@ function updateGameArea()
   players.forEach(player => player.update());
   bulletsArray.forEach(bullet => bullet.update());
   explosionsArray.forEach(explosion => explosion.update());
-  drawBulletPath(players[activePlayer]);
+  drawShootSpeedCone(players[activePlayer]);
 }
 
 function getPlayerGround(playerId)
