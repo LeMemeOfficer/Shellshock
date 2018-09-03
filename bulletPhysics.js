@@ -11,9 +11,22 @@ function drawBulletPath(player)
 
 function explosion(xCoord, yCoord, radius)
 {
+  var hitPlayer;
+
   xCoord = Math.floor(xCoord);
   yCoord = Math.floor(yCoord);
 
+  //detect hit
+  players.forEach(player =>
+  {
+    var buffer = hitDetection([xCoord, yCoord], [player.x, player.y], radius, player.id);
+    if(buffer != -1)
+    {
+      hitPlayer = buffer;
+    }
+  });
+
+  console.log(hitPlayer, " got hit");
   //draw explosion
   newExplosion = new explosionAnimation(xCoord, yCoord);
   explosionsArray.push(newExplosion);

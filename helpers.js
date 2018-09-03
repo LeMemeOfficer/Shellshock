@@ -37,3 +37,12 @@ function drawCircle(ctx, xPos, yPos, radius, color)
   ctx.arc(xPos, yPos, radius, 0,2*Math.PI);
   ctx.fill();
 }
+
+function hitDetection(bombPos, playerPos, explosionRadius, id)
+{
+  if(getDistance(bombPos, playerPos) <= explosionRadius)
+  {
+    return id;
+  }
+  return -1;
+}
