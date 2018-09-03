@@ -8,7 +8,7 @@ image_explosion2.src = "images/assets/explosion2.png";
 var image_explosion3 = new Image();
 image_explosion3.src = "images/assets/explosion3.png";
 
-function explosionObject(xPos, yPos)
+function explosionAnimation(xPos, yPos)
 {
   this.id = explosionId.getNextId();
 
@@ -48,8 +48,6 @@ function explosionObject(xPos, yPos)
         ctx = myGameArea.context;
         ctx.drawImage(image_explosion3, xPos - Math.floor(image_explosion3.width / 2), yPos - Math.floor(image_explosion3.height / 2));
         break;
-      default:
-
     }
   }
 }
