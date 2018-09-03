@@ -1,8 +1,8 @@
-nextId = 0;
-
-function getBulletId()
+function counter()
 {
-  currentId = nextId;
-  nextId++;
-  return currentId;
+  this.id = 0;
+  this.getNextId = function ()
+  {
+    return this.id++;
+  }
 }

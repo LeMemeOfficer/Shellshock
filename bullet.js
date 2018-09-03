@@ -4,8 +4,7 @@ var GRAVITY = 2;
 
 function bullet(xCoord, yCoord, horizontalSpeed, verticalSpeed)
 {
-  this.id = getBulletId();
-
+  this.id = bulletId.getNextId();
   //BulletPosition
   this.xPos = xCoord;
   this.yPos = yCoord;
@@ -23,6 +22,7 @@ function bullet(xCoord, yCoord, horizontalSpeed, verticalSpeed)
        this.yPos >= CANVAS_HEIGHT)
     {
       explosion(this.xPos, this.yPos, 26);
+
       bulletsArray = bulletsArray.filter(bullet => bullet.id != this.id);
     }
 

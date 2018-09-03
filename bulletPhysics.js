@@ -15,7 +15,8 @@ function explosion(xCoord, yCoord, radius)
   yCoord = Math.floor(yCoord);
 
   //draw explosion
-  drawExplosion(xCoord, yCoord);
+  newExplosion = new explosionObject(xCoord, yCoord);
+  explosionsArray.push(newExplosion);
 
   var inExplosionCounter = 0;
   var startPoint;
