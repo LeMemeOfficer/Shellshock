@@ -15,7 +15,7 @@ function explosion(xCoord, yCoord, radius)
   yCoord = Math.floor(yCoord);
 
   //draw explosion
-  drawCircle(myGameArea.context, xCoord, yCoord, 26, "red");
+  drawExplosion(xCoord, yCoord);
 
   var inExplosionCounter = 0;
   var startPoint;

@@ -1,3 +1,7 @@
+//load images
+var image_explosion1 = new Image();
+image_explosion1.src = "images/assets/explosion1.png";
+
 function inBetween(variable, min, max)
 {
   if(variable >= min && variable <= max)
@@ -30,10 +34,16 @@ function getNextPlayer()
   }
 }
 
-function drawCircle(ctx, xPosition, yPosition, radius, color)
+function drawCircle(ctx, xPos, yPos, radius, color)
 {
   ctx.fillStyle = color;
   ctx.beginPath();
-  ctx.arc(xPosition, yPosition, radius, 0,2*Math.PI);
+  ctx.arc(xPos, yPos, radius, 0,2*Math.PI);
   ctx.fill();
+}
+
+function drawExplosion(xPos, yPos)
+{
+  ctx = myGameArea.context;
+  ctx.drawImage(image_explosion1, xPos - Math.floor(image_explosion1.width / 2), yPos - Math.floor(image_explosion1.height / 2));
 }
