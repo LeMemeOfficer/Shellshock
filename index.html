@@ -5,33 +5,38 @@
 </head>
 <link rel="stylesheet" type="text/css" href="style.css">
 <body onload="startGame()">
-<script src="figure.js"></script>
-<script src="figureHelpers.js"></script>
-<script src="ground.js"></script>
-<script src="groundHelpers.js"></script>
-<script src="helpers.js"></script>
 <script src="bullet.js"></script>
 <script src="bulletHelpers.js"></script>
-<script src="bulletPhysics.js"></script>
-<script src="bulletPhysicsHelpers.js"></script>
+<script src="calculations.js"></script>
+<script src="drawHelpers.js"></script>
 <script src="explosion.js"></script>
+<script src="figure.js"></script>
+<script src="figureHelpers.js"></script>
+<script src="gameLogicHelpers.js"></script>
+<script src="ground.js"></script>
+<script src="groundHelpers.js"></script>
+<script src="imageHelpers.js"></script>
 <script src="keyboardControls.js"></script>
 <script src="keyboardControlsHelper.js"></script>
+
 <script>
 //--------------------PARAMETER--------------------
 var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
 
+var bulletsArray = [];
+var bulletId = new counter();
+
+var explosionsArray = [];
+var explosionId = new counter()
+
 var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0),
                new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1)];
+var activePlayer = 0;
+
 var ground = new ground();
 var mousePosition = [0, 0];
-var activePlayer = 0;
-var bulletsArray = [];
-var explosionsArray = [];
-var bulletId = new counter();
-var explosionId = new counter()
 
 function startGame()
 {

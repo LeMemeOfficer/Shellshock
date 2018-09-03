@@ -6,17 +6,14 @@ function processMoveControlls(currentPlayer, key)
 {
   switch (key)
   {
-    case currentPlayer.keyLeft://left
+    case currentPlayer.keyLeft:
       if(!pressedKeys.includes(currentPlayer.keyRight)) currentPlayer.moveHorizontal(PLAYER_SPEED * (-1));
       else currentPlayer.stopHorizontal();
       break;
 
-    case currentPlayer.keyRight://right
+    case currentPlayer.keyRight:
       if(!pressedKeys.includes(currentPlayer.keyLeft)) currentPlayer.moveHorizontal(PLAYER_SPEED);
       else currentPlayer.stopHorizontal();
-      break;
-
-    default:
       break;
   }
 }

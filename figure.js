@@ -1,5 +1,7 @@
 //--------------------PARAMETER--------------------
 var MAX_MOVEMENT = 25;
+var OFFSET_GROUND = 7;
+var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
 function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
@@ -11,6 +13,7 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   //Appearence
   this.width = width;
   this.height = height;
+  this.color = color
 
   //Coordinates
   this.x = x;
@@ -29,39 +32,33 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   //Draw on Canvas
   this.update = function()
   {
+    //locate edges of player rectangle
     var edge1 = getFirstEdge([this.x, this.y], this.width, this.height, this.angle)
     var edge2 = getNextEdge(edge1, this.width, this.angle, 0)
     var edge3 = getNextEdge(edge2, this.height, this.angle, 1)
     var edge4 = getNextEdge(edge3, this.width, this.angle, 2)
 
-    ctx = myGameArea.context;
-    ctx.fillStyle = color;
-
-    ctx.beginPath();
-    ctx.moveTo(edge1[0],edge1[1]);
-    ctx.lineTo(edge2[0],edge2[1]);
-    ctx.lineTo(edge3[0],edge3[1]);
-    ctx.lineTo(edge4[0],edge4[1])
-    ctx.fill();
+    drawPlayer(edge1, edge2, edge3, edge4, this.color);
   }
 
   this.newPos = function(groundHeight)
   {
 
     //Check if player is in boundaries of canvas
-    if(inBetween(this.x + this.speedX, 10, myGameArea.canvas.width - 10))
+    if(inBetween(this.x + this.speedX, OFFSET_WALL, myGameArea.canvas.width - OFFSET_WALL))
     {
       this.x += this.speedX;
     };
 
-    //Set set player on ground
-    this.y = CANVAS_HEIGHT - groundHeight[0] - 2;
+    //Position player on ground
+    this.y = CANVAS_HEIGHT - groundHeight[0] - OFFSET_GROUND;
     this.angle = calcTilt(groundHeight);
   }
 
   //Movement
   this.moveHorizontal = function(speed)
   {
+    //If player has movement left
     if(this.movementCounter < MAX_MOVEMENT)
     {
       this.speedX = speed;

@@ -1,10 +1,3 @@
-//load images
-var image_carton = new Image();
-image_carton.src = "images/patterns/ground_carton2.png";
-
-var image_carton_ripped = new Image();
-image_carton_ripped.src = "images/patterns/ground_carton_ripped2.png";
-
 function ground()
 {
   this.groundMatrix = [];
@@ -19,13 +12,15 @@ function ground()
   {
     ctx = groundCanvas.context;
 
-    var pattern = ctx.createPattern(image_carton, "repeat");
-    var pattern_outline = ctx.createPattern(image_carton_ripped, "repeat");
+    //Setting textures
+    var groundTexture = ctx.createPattern(image_carton, "repeat");
+    ctx.fillStyle = groundTexture;
 
-    ctx.fillStyle = pattern;
     ctx.lineWidth = 10;
-    ctx.strokeStyle = pattern_outline;
+    var groundOutlineTexture = ctx.createPattern(image_carton_ripped, "repeat");
+    ctx.strokeStyle = groundOutlineTexture;
 
+    //drawing Ground
     ctx.beginPath();
     ctx.moveTo(groundCanvas.canvas.width, groundCanvas.canvas.height + 10);
     ctx.lineTo(-10, groundCanvas.canvas.height + 10);

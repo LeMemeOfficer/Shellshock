@@ -1,17 +1,21 @@
-function getFirstEdge(coordinates, width, height, angle)
+//--------------------PARAMETER--------------------
+var TILT_SMOOTH_MODIFICATOR = 25;
+//--------------------PARAMETER--------------------
+
+function calcTilt(surroundingHeights)
 {
-  return getNextEdge(getNextEdge(coordinates, width / 2, angle, 2), height / 2, angle, 3);
+  return (Math.atan((surroundingHeights[1] - surroundingHeights[2]) / TILT_SMOOTH_MODIFICATOR, 16) * 180 / Math.PI);
 }
 
-function getNextEdge(coordinates, length, angle, angleModifier)
+function drawPlayer(edge1, edge2, edge3, edge4, color)
 {
-  var pointX = Math.round(coordinates[0] + length * Math.cos(Math.PI * (angle + 90 * angleModifier) / 180));
-  var pointY = Math.round(coordinates[1] + length * Math.sin(Math.PI * (angle + 90 * angleModifier) / 180));
-  var bufferPoint = [pointX, pointY];
-  return bufferPoint;
-}
+  ctx = myGameArea.context;
+  ctx.fillStyle = color;
 
-function calcTilt(surrHeights)
-{
-  return (Math.atan((surrHeights[1] - surrHeights[2]) / 8, 16) * 180 / Math.PI);
+  ctx.beginPath();
+  ctx.moveTo(edge1[0],edge1[1]);
+  ctx.lineTo(edge2[0],edge2[1]);
+  ctx.lineTo(edge3[0],edge3[1]);
+  ctx.lineTo(edge4[0],edge4[1])
+  ctx.fill();
 }
