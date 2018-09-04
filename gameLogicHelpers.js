@@ -1,7 +1,7 @@
 //--------------------PARAMETER--------------------
 var INTENSITY_MODIFIER = 3.2;
 var COLOR_MODIFIER_DISTANCE = 300;
-var CONE_OFFSET = 20;
+var CONE_OFFSET = 30;
 var CONE_LENGTH = 100;
 var CONE_WIDTH = 10;
 //--------------------PARAMETER--------------------

@@ -1,6 +1,6 @@
 //--------------------PARAMETER--------------------
-var MAX_MOVEMENT = 25;
-var OFFSET_GROUND = 7;
+var MAX_MOVEMENT = 100;
+var OFFSET_GROUND = 8;
 var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
@@ -40,14 +40,11 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id, name)
     //Position player on ground
     this.y = CANVAS_HEIGHT - groundHeight[0] - OFFSET_GROUND;
     this.angle = calcTilt(groundHeight);
+    var cannonAngle = getAngle([this.x, this.y], [mousePosition[0], mousePosition[1]]);
 
-    //locate edges of player rectangle
-    var edge1 = getFirstEdge([this.x, this.y], this.width, this.height, this.angle)
-    var edge2 = getNextEdge(edge1, this.width, this.angle, 0)
-    var edge3 = getNextEdge(edge2, this.height, this.angle, 1)
-    var edge4 = getNextEdge(edge3, this.width, this.angle, 2)
-
-    drawPlayer(edge1, edge2, edge3, edge4, this.color);
+    //draw tank
+    drawBarrel(myGameArea, this.x, this.y, image_tank_blue_cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
+    drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, image_tank_blue, this.width, this.height, this.angle);
 
     writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name);
   }
