@@ -19,6 +19,12 @@ image_tank_blue.src = "images/assets/tank_blue.png";
 
 var image_tank_blue_cannon = new Image();
 image_tank_blue_cannon.src = "images/assets/tank_blue_cannon.png";
+
+var image_tank_red = new Image();
+image_tank_red.src = "images/assets/tank_red.png";
+
+var image_tank_red_cannon = new Image();
+image_tank_red_cannon.src = "images/assets/tank_red_cannon.png";
 //--------------------LOAD IMAGES--------------------
 
 function drawImageCentered(canvas, xPos, yPos, image)

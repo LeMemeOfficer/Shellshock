@@ -1,10 +1,10 @@
 //--------------------PARAMETER--------------------
 var MAX_MOVEMENT = 100;
-var OFFSET_GROUND = 8;
+var OFFSET_GROUND = 10;
 var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
-function figure(width, height, angle, color, x, y, keyLeft, keyRight, id, name)
+function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg)
 {
   //Controls
   this.keyLeft = keyLeft
@@ -13,7 +13,8 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id, name)
   //Appearence
   this.width = width;
   this.height = height;
-  this.color = color
+  this.body = tankImg;
+  this.cannon = cannonImg;
 
   //Coordinates
   this.x = x;
@@ -43,8 +44,8 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id, name)
     var cannonAngle = getAngle([this.x, this.y], [mousePosition[0], mousePosition[1]]);
 
     //draw tank
-    drawBarrel(myGameArea, this.x, this.y, image_tank_blue_cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
-    drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, image_tank_blue, this.width, this.height, this.angle);
+    drawBarrel(myGameArea, this.x, this.y, this.cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
+    drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width, this.height, this.angle);
 
     writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name);
   }
