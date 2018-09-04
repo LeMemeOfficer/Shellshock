@@ -82,19 +82,11 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
-  players[activePlayer].newPos(getPlayerGround(activePlayer));
+  players[activePlayer].newPos();
   players.forEach(player => player.update());
   bulletsArray.forEach(bullet => bullet.update());
   explosionsArray.forEach(explosion => explosion.update());
   drawShootSpeedCone(players[activePlayer]);
-}
-
-function getPlayerGround(playerId)
-{
-  groundHeights = [ground.groundMatrix[ players[playerId].x      / 2], //ground heigth at tank center
-                   ground.groundMatrix[(players[playerId].x - 8) / 2], //ground heigth at left offset
-                   ground.groundMatrix[(players[playerId].x + 8) / 2]];//ground heigth at right offset
-  return groundHeights;
 }
 </script>
 

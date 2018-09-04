@@ -32,6 +32,14 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   //Draw on Canvas
   this.update = function()
   {
+    groundHeight = [ground.groundMatrix[ this.x      / 2], //ground heigth at tank center
+                    ground.groundMatrix[(this.x - 8) / 2], //ground heigth at left offset
+                    ground.groundMatrix[(this.x + 8) / 2]];//ground heigth at right offset
+
+    //Position player on ground
+    this.y = CANVAS_HEIGHT - groundHeight[0] - OFFSET_GROUND;
+    this.angle = calcTilt(groundHeight);
+
     //locate edges of player rectangle
     var edge1 = getFirstEdge([this.x, this.y], this.width, this.height, this.angle)
     var edge2 = getNextEdge(edge1, this.width, this.angle, 0)
@@ -41,18 +49,13 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
     drawPlayer(edge1, edge2, edge3, edge4, this.color);
   }
 
-  this.newPos = function(groundHeight)
+  this.newPos = function()
   {
-
     //Check if player is in boundaries of canvas
     if(inBetween(this.x + this.speedX, OFFSET_WALL, myGameArea.canvas.width - OFFSET_WALL))
     {
       this.x += this.speedX;
     };
-
-    //Position player on ground
-    this.y = CANVAS_HEIGHT - groundHeight[0] - OFFSET_GROUND;
-    this.angle = calcTilt(groundHeight);
   }
 
   //Movement
