@@ -18,3 +18,32 @@ function drawCircle(ctx, xPos, yPos, radius, color)
   ctx.arc(xPos, yPos, radius, 0,2*Math.PI);
   ctx.fill();
 }
+
+function writeText(canvas, xPos, yPos, size, font, text, color)
+{
+  ctx = canvas.context;
+  ctx.fillStyle = color;
+  ctx.font = size + "px " + font;
+  ctx.textAlign = "center";
+  ctx.fillText(text, xPos, yPos);
+}
+
+function toastText(xPos, yPos, size, font, text, color)
+{
+  this.id = toastTextId.getNextId();
+
+  this.existenceTimeCounter = 0;
+
+  this.update = function()
+  {
+    if(this.existenceTimeCounter < 50)
+    {
+      writeText(myGameArea, xPos, yPos - this.existenceTimeCounter, size, font, text, color);
+      this.existenceTimeCounter++;
+    }
+    else
+    {
+      toastTextArray = toastTextArray.filter(toastText => toastText._id != this._id);
+    }
+  }
+}

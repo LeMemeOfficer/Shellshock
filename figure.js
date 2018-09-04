@@ -4,7 +4,7 @@ var OFFSET_GROUND = 7;
 var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
-function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
+function figure(width, height, angle, color, x, y, keyLeft, keyRight, id, name)
 {
   //Controls
   this.keyLeft = keyLeft
@@ -25,6 +25,7 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
 
   //Identification
   this.id = id;
+  this.name = name;
 
   //Game logic
   this.movementCounter = 0;
@@ -47,6 +48,8 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
     var edge4 = getNextEdge(edge3, this.width, this.angle, 2)
 
     drawPlayer(edge1, edge2, edge3, edge4, this.color);
+
+    writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name);
   }
 
   this.newPos = function()
@@ -76,5 +79,11 @@ function figure(width, height, angle, color, x, y, keyLeft, keyRight, id)
   this.stopHorizontal = function()
   {
     this.speedX = 0;
+  }
+
+  this.gotHit = function()
+  {
+    toastTextt = new toastText(this.x, this.y - 30, 15, "Arial", "-10 HP", "black");
+    toastTextArray.push(toastTextt);
   }
 }

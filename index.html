@@ -29,10 +29,13 @@ var bulletsArray = [];
 var bulletId = new counter();
 
 var explosionsArray = [];
-var explosionId = new counter()
+var explosionId = new counter();
 
-var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0),
-               new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1)];
+var toastTextArray = [];
+var toastTextId = new counter();
+
+var players = [new figure(25, 18, 0, "red", 60, 120, 65, 68, 0, "Player 1"),
+               new figure(25, 18, 0, "blue", CANVAS_WIDTH - 60, 120, 100, 102, 1, "Player 2")];
 var activePlayer = 0;
 
 var ground = new ground();
@@ -86,6 +89,7 @@ function updateGameArea()
   players.forEach(player => player.update());
   bulletsArray.forEach(bullet => bullet.update());
   explosionsArray.forEach(explosion => explosion.update());
+  toastTextArray.forEach(toastText => toastText.update());
   drawShootSpeedCone(players[activePlayer]);
 }
 </script>

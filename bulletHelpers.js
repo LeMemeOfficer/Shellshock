@@ -15,10 +15,7 @@ function hitDetection(bombPos, explosionRadius)
     }
   });
 
-  if(buffer != -1)
-  {
-    return buffer;
-  }
+  return buffer;
 }
 
 function explode(xPos, yPos, radius)
@@ -27,6 +24,11 @@ function explode(xPos, yPos, radius)
   yPos = Math.floor(yPos);
 
   var hitPlayer = hitDetection([xPos, yPos], radius);
+
+  if(hitPlayer != -1)
+  {
+    players[hitPlayer].gotHit();
+  }
 
   //draw explosion
   newExplosion = new explosionAnimation(xPos, yPos);
