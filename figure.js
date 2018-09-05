@@ -30,6 +30,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
 
   //Game logic
   this.movementCounter = 0;
+  this.life = 100;
 
   //Draw on Canvas
   this.update = function()
@@ -43,11 +44,18 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     this.angle = calcTilt(groundHeight);
     var cannonAngle = getAngle([this.x, this.y], [mousePosition[0], mousePosition[1]]);
 
-    //draw tank
-    drawBarrel(myGameArea, this.x, this.y, this.cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
-    drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width, this.height, this.angle);
-
     writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name);
+
+    //draw tank
+    if(this.life > 0)
+    {
+      drawBarrel(myGameArea, this.x, this.y, this.cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
+      drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width, this.height, this.angle);
+    }
+    else
+    {
+      drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width * 1.3, this.height * 1.3, this.angle);
+    }
   }
 
   this.newPos = function()
@@ -79,9 +87,14 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     this.speedX = 0;
   }
 
-  this.gotHit = function()
+  this.gotHit = function(damage)
   {
-    toastTextt = new toastText(this.x, this.y - 30, 15, "Arial", "-10 HP", "black");
-    toastTextArray.push(toastTextt);
+    newToastText = new toastText(this.x, this.y - 30, 15, "Arial", "-" + damage + " HP", "black");
+    toastTextArray.push(newToastText);
+    this.life -= damage;
+    if(this.life <= 0)
+    {
+      this.body = image_tank_destroyed;
+    }
   }
 }

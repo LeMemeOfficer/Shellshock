@@ -12,6 +12,10 @@ function ground()
   {
     ctx = groundCanvas.context;
 
+    var skyTexture = ctx.createPattern(image_sky, "repeat");
+    ctx.fillStyle = skyTexture;
+    ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
     //Setting textures
     var groundTexture = ctx.createPattern(image_carton, "repeat");
     ctx.fillStyle = groundTexture;

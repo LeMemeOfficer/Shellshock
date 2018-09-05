@@ -5,13 +5,14 @@ function removeBullet(idOfBulletToRemove)
 
 function hitDetection(bombPos, explosionRadius)
 {
-  var buffer = -1;
+  var buffer = [-1, 0];
 
   players.forEach(player =>
   {
-    if(getDistance(bombPos, [player.x, player.y]) <= explosionRadius)
+    if(getDistance(bombPos, [player.x, player.y]) <= explosionRadius * 2)
     {
-      buffer = player.id;
+      buffer[0] = player.id;
+      buffer[1] = 50;
     }
   });
 
@@ -23,11 +24,13 @@ function explode(xPos, yPos, radius)
   xPos = Math.floor(xPos);
   yPos = Math.floor(yPos);
 
-  var hitPlayer = hitDetection([xPos, yPos], radius);
+  var hitInfo = hitDetection([xPos, yPos], radius);
+  var hitPlayer = hitInfo[0];
+  var damage = hitInfo[1];
 
   if(hitPlayer != -1)
   {
-    players[hitPlayer].gotHit();
+    players[hitPlayer].gotHit(damage);
   }
 
   //draw explosion

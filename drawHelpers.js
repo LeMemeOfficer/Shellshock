@@ -47,3 +47,32 @@ function toastText(xPos, yPos, size, font, text, color)
     }
   }
 }
+
+function drawRoundedBox(xPos, yPos, height, width, cornerRadius, color, borderColor)
+{
+  ctx = myGameArea.context;
+  ctx.fillStyle = color;
+  ctx.strokeStyle = borderColor;
+  ctx.beginPath();
+  ctx.arc(xPos - width / 2 + cornerRadius, yPos - height / 2 + cornerRadius, cornerRadius, 1 * Math.PI, 1.5 * Math.PI);
+  ctx.arc(xPos + width / 2 - cornerRadius, yPos - height / 2 + cornerRadius, cornerRadius, 1.5 * Math.PI, 0 * Math.PI);
+  ctx.arc(xPos + width / 2 - cornerRadius, yPos + height / 2 - cornerRadius, cornerRadius, 0 * Math.PI, 0.5 * Math.PI);
+  ctx.arc(xPos - width / 2 + cornerRadius, yPos + height / 2 - cornerRadius, cornerRadius, 0.5 * Math.PI, 1 * Math.PI);
+  ctx.lineTo(xPos - width / 2, yPos - height / 2 + cornerRadius);
+  ctx.fill();
+  ctx.stroke()
+}
+
+function drawButton(xPos, yPos, height, width, cornerRadius, color, hoverColor, borderColor)
+{
+  var chosenColor;
+  if(inBetween(mousePosition[0], xPos - width / 2, xPos + width / 2) && inBetween(mousePosition[1], yPos - height / 2, yPos + height / 2))
+  {
+    chosenColor = hoverColor;
+  }
+  else
+  {
+    chosenColor = color;
+  }
+  drawRoundedBox(xPos, yPos, height, width, cornerRadius, chosenColor, borderColor)
+}

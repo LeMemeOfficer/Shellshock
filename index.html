@@ -3,6 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="style.css">
 <body onload="startGame()">
 <script src="bullet.js"></script>
@@ -18,12 +19,14 @@
 <script src="imageHelpers.js"></script>
 <script src="keyboardControls.js"></script>
 <script src="keyboardControlsHelper.js"></script>
+<script src="nextPlayerMenu.js"></script>
 
 <script>
 //--------------------PARAMETER--------------------
 var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
+var nextPlayerWindow = new nextPlayerMenu();
 
 var bulletsArray = [];
 var bulletId = new counter();
@@ -91,6 +94,10 @@ function updateGameArea()
   explosionsArray.forEach(explosion => explosion.update());
   toastTextArray.forEach(toastText => toastText.update());
   drawShootSpeedCone(players[activePlayer]);
+  if(nextPlayerWindow.active)
+  {
+    nextPlayerWindow.draw();
+  }
 }
 </script>
 

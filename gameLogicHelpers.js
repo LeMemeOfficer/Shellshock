@@ -17,6 +17,14 @@ function getNextPlayer()
   {
     activePlayer = 0;
   }
+  if(players[activePlayer].life <= 0)
+  {
+    getNextPlayer();
+  }
+  else
+  {
+    nextPlayerMenu.setActive(players[activePlayer].name);
+  }
 }
 
 function counter()
