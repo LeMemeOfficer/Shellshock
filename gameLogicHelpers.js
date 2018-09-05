@@ -21,10 +21,6 @@ function getNextPlayer()
   {
     getNextPlayer();
   }
-  else
-  {
-    nextPlayerMenu.setActive(players[activePlayer].name);
-  }
 }
 
 function counter()
@@ -67,4 +63,14 @@ function drawShootSpeedCone(player)
   ctx.lineTo(pos3[0], pos3[1]);
   ctx.lineTo(pos1[0], pos1[1]);
   ctx.stroke();
+}
+
+function buttonAction()
+{
+  switch (mouseOverButton) {
+    case "nextPlayerReady":
+      nextPlayerWindow.close();
+      break;
+  }
+  mouseOverButton = "none";
 }

@@ -63,16 +63,18 @@ function drawRoundedBox(xPos, yPos, height, width, cornerRadius, color, borderCo
   ctx.stroke()
 }
 
-function drawButton(xPos, yPos, height, width, cornerRadius, color, hoverColor, borderColor)
+function drawButton(xPos, yPos, height, width, cornerRadius, color, hoverColor, borderColor, buttonName)
 {
   var chosenColor;
   if(inBetween(mousePosition[0], xPos - width / 2, xPos + width / 2) && inBetween(mousePosition[1], yPos - height / 2, yPos + height / 2))
   {
     chosenColor = hoverColor;
+    mouseOverButton = buttonName;
   }
   else
   {
     chosenColor = color;
+    mouseOverButton = "none";
   }
   drawRoundedBox(xPos, yPos, height, width, cornerRadius, chosenColor, borderColor)
 }

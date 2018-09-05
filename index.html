@@ -27,6 +27,7 @@ var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
 var nextPlayerWindow = new nextPlayerMenu();
+var mouseOverButton = "none";
 
 var bulletsArray = [];
 var bulletId = new counter();
@@ -89,11 +90,14 @@ function updateGameArea()
 {
   myGameArea.clear();
   players[activePlayer].newPos();
-  players.forEach(player => player.update());
-  bulletsArray.forEach(bullet => bullet.update());
-  explosionsArray.forEach(explosion => explosion.update());
-  toastTextArray.forEach(toastText => toastText.update());
-  drawShootSpeedCone(players[activePlayer]);
+  if(!nextPlayerWindow.active)
+  {
+    players.forEach(player => player.update());
+    bulletsArray.forEach(bullet => bullet.update());
+    explosionsArray.forEach(explosion => explosion.update());
+    toastTextArray.forEach(toastText => toastText.update());
+    drawShootSpeedCone(players[activePlayer]);
+  }
   if(nextPlayerWindow.active)
   {
     nextPlayerWindow.draw();
