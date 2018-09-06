@@ -22,6 +22,9 @@ function nextPlayerMenu()
   this.close = function()
   {
     this.active = false;
+    shotFired = false;
+    roundEnded = false;
+    getNextPlayer();
   }
 
   this.activate = function(playerName)

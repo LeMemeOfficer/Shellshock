@@ -74,3 +74,11 @@ function buttonAction()
   }
   mouseOverButton = "none";
 }
+
+function waitForRoundEnd()
+{
+  if(bulletsArray.length == 0 && explosionsArray.length == 0)
+  {
+    roundEnded = true;
+  }
+}
