@@ -101,7 +101,7 @@ function updateGameArea()
   {
     players.forEach(player => player.update());
     toastTextArray.forEach(toastText => toastText.update());
-    drawPlayerGui();
+    players.forEach(player => drawPlayerGui(player.id));
     if(!nextPlayerWindow.active)
     {
       players[activePlayer].newPos();
