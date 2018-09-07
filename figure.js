@@ -5,11 +5,15 @@ var OFFSET_GROUND = 10;
 var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
-function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg, color)
+function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg, color, possibleBot)
 {
   //Controls
   this.keyLeft = keyLeft
   this.keyRight = keyRight
+
+  //relevant if Bot
+  this.isBot = possibleBot;
+  this.currMovement = 50;
 
   //Appearence
   this.width = width;
@@ -81,6 +85,32 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     else
     {
       this.speedX = 0;
+    }
+  }
+
+  this.botMove = function()
+  {
+    if(this.currMovement > 0)
+    {
+      this.speedX = -PLAYER_SPEED;
+      this.currMovement--;
+    }
+    else
+    {
+      this.speedX = 0;
+      if(!shotFired)
+      {
+        var targetPlayer = getRandomInt(0, players.length);
+        while(targetPlayer == this.id || players[targetPlayer].life <= 0)
+        {
+          targetPlayer = getRandomInt(0, players.length);
+        }
+        var shotX = getRandomInt((players[targetPlayer].x - this.x) / 16, (players[targetPlayer].x - this.x) / 32);
+        var shotY = getRandomInt(-10, -30);
+        newBullet = new bullet(this.x, this.y, shotX, shotY);
+        bulletsArray.push(newBullet);
+        shotFired = true;
+      }
     }
   }
 

@@ -10,7 +10,8 @@ function getNextPlayer()
 {
   if(numberPlayersLeft() > 0)
   {
-    players[activePlayer].movementCounter = 0
+    players[activePlayer].movementCounter = 0;
+    players[activePlayer].currMovement = getRandomInt(0, MAX_MOVEMENT) + 1;
     if(activePlayer < players.length - 1)
     {
       activePlayer++;
@@ -108,6 +109,10 @@ function buttonAction()
       musicOn = true;
       break;
     case "gameStart":
+      gameStartWindow.close();
+      break;
+    case "gameStartSinglePlayer":
+      isSinglePlayer = true;
       gameStartWindow.close();
       break;
     case "restartGame":

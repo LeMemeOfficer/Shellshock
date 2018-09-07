@@ -2,19 +2,24 @@ var pressedKeys = [];
 
 document.addEventListener('keydown', function(event)
 {
-  if(!pressedKeys.includes(event.keyCode))
+  if(!(isSinglePlayer && players[activePlayer].isBot))
   {
-    pressedKeys.push(event.keyCode);
+    if(!pressedKeys.includes(event.keyCode))
+    {
+      pressedKeys.push(event.keyCode);
+    }
+    processMoveControlls(players[activePlayer], event.keyCode);
   }
-  processMoveControlls(players[activePlayer], event.keyCode);
-  // players.forEach(player => processMoveControlls(player, event.keyCode));
 });
 
 document.addEventListener('keyup', function(event)
 {
-  pressedKeys = pressedKeys.filter(key => key !=  event.keyCode);
+  if(!(isSinglePlayer && players[activePlayer].isBot))
+  {
+    pressedKeys = pressedKeys.filter(key => key !=  event.keyCode);
 
-  players.forEach(player => processStopConditions(player, event.keyCode));
+    players.forEach(player => processStopConditions(player, event.keyCode));
+  }
 });
 
 document.addEventListener('mousemove', function(event)
@@ -28,7 +33,7 @@ document.addEventListener('mousedown', function(event)
 {
   if(event.button == 0)
   {
-    if(noWindowOpen() && !shotFired && mouseOverButton == "none")
+    if(noWindowOpen() && !shotFired && mouseOverButton == "none" && !(isSinglePlayer && players[activePlayer].isBot))
     {
       newBullet = new bullet(players[activePlayer].x, players[activePlayer].y,
         (mousePosition[0] - players[activePlayer].x) / 8,

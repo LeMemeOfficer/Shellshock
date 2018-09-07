@@ -40,16 +40,18 @@ function gameStartScreen()
   this.xPos = CANVAS_WIDTH / 2;
   this.yPos = CANVAS_HEIGHT / 2;
   this.width = 300;
-  this.height = 150;
+  this.height = 200;
   this.radius = 10;
   this.color = "#38B95D";
 
   this.draw = function()
   {
     drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
-    writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", "Doodle Panzers", "Black");
-    drawButton(this.xPos, this.yPos + this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gameStart");
-    writeText(myGameArea, this.xPos, this.yPos + this.height / 6 + 7, 20, "Oswald", "Start!", "Black");
+    writeText(myGameArea, this.xPos, this.yPos - this.height / 4, 35, "Oswald", "Doodle Panzers", "Black");
+    drawButton(this.xPos, this.yPos, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gameStartSinglePlayer");
+    writeText(myGameArea, this.xPos, this.yPos + 7, 20, "Oswald", "Singleplayer", "Black");
+    drawButton(this.xPos, this.yPos + this.height / 4, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gameStart");
+    writeText(myGameArea, this.xPos, this.yPos + this.height / 4 + 7, 20, "Oswald", "Multiplayer", "Black");
   }
 
   this.close = function()

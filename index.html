@@ -29,6 +29,7 @@ var CANVAS_WIDTH = 1000;
 var nextPlayerWindow = new nextPlayerMenu();
 var gameStartWindow = new gameStartScreen();
 var gameFinishedWindow = new gameFinishedScreen();
+var isSinglePlayer = false;
 
 var mouseOverButton = "none";
 var shotFired = false;
@@ -45,8 +46,8 @@ var explosionId = new counter();
 var toastTextArray = [];
 var toastTextId = new counter();
 
-var players = [new figure(38, 26, 0, 60, 120, 65, 68, 0, "Player 1", image_tank_red, image_tank_red_cannon, "#ED2129"),
-               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 65, 68, 1, "Player 2", image_tank_blue, image_tank_blue_cannon, "#13A9E9")];
+var players = [new figure(38, 26, 0, 60, 120, 65, 68, 0, "Player 1", image_tank_red, image_tank_red_cannon, "#ED2129", false),
+               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 65, 68, 1, "Player 2", image_tank_blue, image_tank_blue_cannon, "#13A9E9", true)];
 var activePlayer = 0;
 
 var ground = new ground();
@@ -96,6 +97,10 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
+  if(players[activePlayer].isBot && isSinglePlayer)
+  {
+    players[activePlayer].botMove();
+  }
   drawMenuBar();
   if(!gameStartWindow.active)
   {
