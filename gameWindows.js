@@ -82,6 +82,21 @@ function gameFinishedScreen()
   }
 }
 
+function drawPlayerGui()
+{
+  var xPos = players[activePlayer].x;
+  var yPos = CANVAS_HEIGHT - 50;
+  var width = 100;
+  var height = 80;
+  var radius = 5;
+  var color = players[activePlayer].color;
+  drawRoundedBox(xPos, yPos, width, height, radius, color);
+  writeText(myGameArea, xPos, yPos - height / 4, 15, "Oswald", players[activePlayer].name, "Black")
+  drawBar(xPos + width / 8, yPos, 15, 60, "blue", "green", MAX_LIFE, players[activePlayer].life);
+  drawBar(xPos + width / 8, yPos + height / 4, 15, 60, "blue", "green", MAX_MOVEMENT, MAX_MOVEMENT - players[activePlayer].movementCounter);
+  drawImageCenteredAndScaled(myGameArea, xPos - width / 3, yPos, icon_life, 15, 15);
+  drawImageCenteredAndScaled(myGameArea, xPos - width / 3, yPos + height / 4, icon_feul, 15, 15);
+}
 
 function drawMenuBar()
 {

@@ -1,10 +1,11 @@
 //--------------------PARAMETER--------------------
 var MAX_MOVEMENT = 100;
+var MAX_LIFE = 100;
 var OFFSET_GROUND = 10;
 var OFFSET_WALL = 10;
 //--------------------PARAMETER--------------------
 
-function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg)
+function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg, color)
 {
   //Controls
   this.keyLeft = keyLeft
@@ -15,6 +16,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
   this.height = height;
   this.body = tankImg;
   this.cannon = cannonImg;
+  this.color = color;
 
   //Coordinates
   this.x = x;
@@ -30,7 +32,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
 
   //Game logic
   this.movementCounter = 0;
-  this.life = 100;
+  this.life = MAX_LIFE;
 
   //Draw on Canvas
   this.update = function()

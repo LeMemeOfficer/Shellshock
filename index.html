@@ -45,8 +45,8 @@ var explosionId = new counter();
 var toastTextArray = [];
 var toastTextId = new counter();
 
-var players = [new figure(38, 26, 0, 60, 120, 65, 68, 0, "Player 1", image_tank_red, image_tank_red_cannon),
-               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 65, 68, 1, "Player 2", image_tank_blue, image_tank_blue_cannon)];
+var players = [new figure(38, 26, 0, 60, 120, 65, 68, 0, "Player 1", image_tank_red, image_tank_red_cannon, "#ED2129"),
+               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 65, 68, 1, "Player 2", image_tank_blue, image_tank_blue_cannon, "#13A9E9")];
 var activePlayer = 0;
 
 var ground = new ground();
@@ -101,6 +101,7 @@ function updateGameArea()
   {
     players.forEach(player => player.update());
     toastTextArray.forEach(toastText => toastText.update());
+    drawPlayerGui();
     if(!nextPlayerWindow.active)
     {
       players[activePlayer].newPos();

@@ -110,3 +110,19 @@ function checkHoverFromCenter(xPos, yPos, width, height)
     return false;
   }
 }
+
+function drawBar(xPos, yPos, height, width, color, barColor, maxValue, currentValue)
+{
+  ctx = myGameArea.context;
+  ctx.beginPath();
+  ctx.fillStyle = color;
+  ctx.rect(xPos - width / 2, yPos - height / 2, width, height);
+  ctx.fill();
+  if(currentValue > 1)
+  {
+    ctx.beginPath();
+    ctx.fillStyle = barColor;
+    ctx.rect(xPos - width / 2 + 1, yPos - height / 2 + 1, width * (currentValue / maxValue) - 2, height - 2);
+    ctx.fill();
+  }
+}

@@ -46,6 +46,12 @@ icon_sound.src = "images/icons/sound_icon.png"
 
 var icon_sound_muted = new Image();
 icon_sound_muted.src = "images/icons/sound_muted_icon.png"
+
+var icon_life = new Image();
+icon_life.src = "images/icons/life_icon.png"
+
+var icon_feul = new Image();
+icon_feul.src = "images/icons/feul_icon.png"
 //--------------------LOAD IMAGES--------------------
 
 function drawImageCentered(canvas, xPos, yPos, image)
