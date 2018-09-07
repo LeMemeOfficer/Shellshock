@@ -40,7 +40,7 @@ function ground()
 
   this.createGroundMatrix = function()
   {
-    this.lastHeight = 300;
+    this.lastHeight = CANVAS_HEIGHT / 3;
     this.currenHeight = this.lastHeight;
 
     //Roughly creating Terrian
