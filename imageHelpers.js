@@ -31,12 +31,33 @@ image_tank_destroyed.src = "images/assets/tank_destroyed.png";
 
 var image_sky = new Image();
 image_sky.src = "images/patterns/sky.png";
+
+var icon_menu = new Image();
+icon_menu.src = "images/icons/menu_icon.png"
+
+var icon_music = new Image();
+icon_music.src = "images/icons/music_icon.png"
+
+var icon_music_muted = new Image();
+icon_music_muted.src = "images/icons/music_muted_icon.png"
+
+var icon_sound = new Image();
+icon_sound.src = "images/icons/sound_icon.png"
+
+var icon_sound_muted = new Image();
+icon_sound_muted.src = "images/icons/sound_muted_icon.png"
 //--------------------LOAD IMAGES--------------------
 
 function drawImageCentered(canvas, xPos, yPos, image)
 {
   ctx = canvas.context;
   ctx.drawImage(image, xPos - Math.floor(image.width / 2), yPos - Math.floor(image.height / 2));
+}
+
+function drawImageCenteredAndScaled(canvas, xPos, yPos, image, width, height)
+{
+  ctx = canvas.context;
+  ctx.drawImage(image, xPos -width / 2, yPos -height / 2, width, height);
 }
 
 function drawImageCenteredAndScaledAndRotated(canvas, xPos, yPos, image, width, height, angle)

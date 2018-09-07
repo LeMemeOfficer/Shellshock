@@ -89,6 +89,18 @@ function buttonAction()
     case "nextPlayerReady":
       nextPlayerWindow.close();
       break;
+    case "toggle_sound":
+      soundOn = false;
+      break;
+    case "toggle_music":
+      musicOn = false;
+      break;
+    case "toggle_sound_muted":
+      soundOn = true;
+      break;
+    case "toggle_music_muted":
+      musicOn = true;
+      break;
   }
   mouseOverButton = "none";
 }

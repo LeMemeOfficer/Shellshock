@@ -48,7 +48,7 @@ function toastText(xPos, yPos, size, font, text, color)
   }
 }
 
-function drawRoundedBox(xPos, yPos, height, width, cornerRadius, color, borderColor)
+function drawRoundedBox(xPos, yPos, width, height, cornerRadius, color, borderColor)
 {
   ctx = myGameArea.context;
   ctx.fillStyle = color;
@@ -63,10 +63,10 @@ function drawRoundedBox(xPos, yPos, height, width, cornerRadius, color, borderCo
   ctx.stroke()
 }
 
-function drawButton(xPos, yPos, height, width, cornerRadius, color, hoverColor, borderColor, buttonName)
+function drawButton(xPos, yPos, width, height, cornerRadius, color, hoverColor, borderColor, buttonName)
 {
   var chosenColor;
-  if(inBetween(mousePosition[0], xPos - width / 2, xPos + width / 2) && inBetween(mousePosition[1], yPos - height / 2, yPos + height / 2))
+  if(checkHoverFromCenter(xPos, yPos, width, height))
   {
     chosenColor = hoverColor;
     mouseOverButton = buttonName;
@@ -74,7 +74,39 @@ function drawButton(xPos, yPos, height, width, cornerRadius, color, hoverColor, 
   else
   {
     chosenColor = color;
-    mouseOverButton = "none";
+    if(mouseOverButton == buttonName)
+    {
+      mouseOverButton = "none";
+    }
   }
-  drawRoundedBox(xPos, yPos, height, width, cornerRadius, chosenColor, borderColor)
+  drawRoundedBox(xPos, yPos, width, height, cornerRadius, chosenColor, borderColor)
+}
+
+function drawMenuIcon(xPos, yPos, image, iconName ,scale)
+{
+  if(checkHoverFromCenter(xPos, yPos, scale, scale))
+  {
+    drawImageCenteredAndScaled(myGameArea, xPos, yPos, image, scale + 10, scale + 10);
+    mouseOverButton = iconName;
+  }
+  else
+  {
+    drawImageCenteredAndScaled(myGameArea, xPos, yPos, image, scale, scale);
+    if(mouseOverButton == iconName)
+    {
+      mouseOverButton = "none"
+    }
+  }
+}
+
+function checkHoverFromCenter(xPos, yPos, width, height)
+{
+  if(inBetween(mousePosition[0], xPos - width / 2, xPos + width / 2) && inBetween(mousePosition[1], yPos - height / 2, yPos + height / 2))
+  {
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }

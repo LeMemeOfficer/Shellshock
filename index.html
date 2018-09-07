@@ -30,6 +30,8 @@ var nextPlayerWindow = new nextPlayerMenu();
 var mouseOverButton = "none";
 var shotFired = false;
 var roundEnded = false;
+var soundOn = true;
+var musicOn = true;
 
 var bulletsArray = [];
 var bulletId = new counter();
@@ -41,7 +43,7 @@ var toastTextArray = [];
 var toastTextId = new counter();
 
 var players = [new figure(38, 26, 0, 60, 120, 65, 68, 0, "Player 1", image_tank_red, image_tank_red_cannon),
-               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 100, 102, 1, "Player 2", image_tank_blue, image_tank_blue_cannon)];
+               new figure(38, 26, 0, CANVAS_WIDTH - 60, 120, 65, 68, 1, "Player 2", image_tank_blue, image_tank_blue_cannon)];
 var activePlayer = 0;
 
 var ground = new ground();
@@ -91,6 +93,7 @@ var groundCanvas = {
 function updateGameArea()
 {
   myGameArea.clear();
+  drawMenuBar();
   players.forEach(player => player.update());
   toastTextArray.forEach(toastText => toastText.update());
   if(!nextPlayerWindow.active)
@@ -98,7 +101,10 @@ function updateGameArea()
     players[activePlayer].newPos();
     bulletsArray.forEach(bullet => bullet.update());
     explosionsArray.forEach(explosion => explosion.update());
-    drawShootSpeedCone(players[activePlayer]);
+    // if(mouseOverButton == "none")
+    // {
+      drawShootSpeedCone(players[activePlayer]);
+    // }
   }
   if(nextPlayerWindow.active)
   {

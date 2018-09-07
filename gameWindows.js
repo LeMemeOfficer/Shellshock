@@ -4,8 +4,8 @@ function nextPlayerMenu()
   this.active = false;
   this.xPos = CANVAS_WIDTH / 2;
   this.yPos = CANVAS_HEIGHT / 2;
-  this.height = 150;
   this.width = 300;
+  this.height = 150;
   this.radius = 10;
   this.color = "#38B95D";
 
@@ -13,9 +13,9 @@ function nextPlayerMenu()
 
   this.draw = function()
   {
-    drawRoundedBox(this.xPos, this.yPos, this.height, this.width, this.radius, this.color);
+    drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
     writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", this.playerName + "'s turn", "Black");
-    drawButton(this.xPos, this.yPos + this.height / 6, 40, 160, 0, "#6AB9DF", "#3A9CCC", "black", "nextPlayerReady");
+    drawButton(this.xPos, this.yPos + this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "nextPlayerReady");
     writeText(myGameArea, this.xPos, this.yPos + this.height / 6 + 7, 20, "Oswald", "Ready", "Black");
   }
 
@@ -31,5 +31,26 @@ function nextPlayerMenu()
   {
     this.playerName = playerName;
     this.active = true;
+  }
+}
+
+function drawMenuBar()
+{
+  drawMenuIcon(CANVAS_WIDTH - 40, 35, icon_menu, "open_menu", 35);
+  if(musicOn)
+  {
+    drawMenuIcon(CANVAS_WIDTH - 40 * 2, 35, icon_music, "toggle_music",35);
+  }
+  else
+  {
+    drawMenuIcon(CANVAS_WIDTH - 40 * 2, 35, icon_music_muted, "toggle_music_muted",35);
+  }
+  if(soundOn)
+  {
+    drawMenuIcon(CANVAS_WIDTH - 42 * 3, 35, icon_sound, "toggle_sound", 35);
+  }
+  else
+  {
+    drawMenuIcon(CANVAS_WIDTH - 42 * 3, 35, icon_sound_muted, "toggle_sound_muted", 35);
   }
 }

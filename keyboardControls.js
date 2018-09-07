@@ -28,14 +28,14 @@ document.addEventListener('mousedown', function(event)
 {
   if(event.button == 0)
   {
-    if(!nextPlayerWindow.active && !shotFired)
+    if(!nextPlayerWindow.active && !shotFired && mouseOverButton == "none")
     {
       newBullet = new bullet(players[activePlayer].x, players[activePlayer].y,
         (mousePosition[0] - players[activePlayer].x) / 8,
         (mousePosition[1] - players[activePlayer].y) / 8);
         bulletsArray.push(newBullet);
         shotFired = true;
-      }
+    }
     if(mouseOverButton != "none")
     {
       buttonAction();
