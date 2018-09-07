@@ -23,6 +23,24 @@ function getNextPlayer()
   }
 }
 
+function getNextPlayerId(currentPlayerId)
+{
+  var nextPlayerId;
+  if(currentPlayerId < players.length - 1)
+  {
+    nextPlayerId = players[currentPlayerId + 1].id;
+  }
+  else
+  {
+    nextPlayerId = players[0].id;
+  }
+  if(players[nextPlayerId].life <= 0)
+  {
+    nextPlayerId = getNextPlayerId(nextPlayerId);
+  }
+  return(nextPlayerId);
+}
+
 function counter()
 {
   this.id = 0;
