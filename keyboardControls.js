@@ -28,7 +28,7 @@ document.addEventListener('mousedown', function(event)
 {
   if(event.button == 0)
   {
-    if(!nextPlayerWindow.active && !shotFired && mouseOverButton == "none")
+    if(noWindowOpen() && !shotFired && mouseOverButton == "none")
     {
       newBullet = new bullet(players[activePlayer].x, players[activePlayer].y,
         (mousePosition[0] - players[activePlayer].x) / 8,

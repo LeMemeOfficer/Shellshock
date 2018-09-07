@@ -27,6 +27,8 @@ var CANVAS_HEIGHT = 600;
 var CANVAS_WIDTH = 1000;
 //--------------------PARAMETER--------------------
 var nextPlayerWindow = new nextPlayerMenu();
+var gameStartWindow = new gameStartScreen();
+
 var mouseOverButton = "none";
 var shotFired = false;
 var roundEnded = false;
@@ -94,21 +96,25 @@ function updateGameArea()
 {
   myGameArea.clear();
   drawMenuBar();
-  players.forEach(player => player.update());
-  toastTextArray.forEach(toastText => toastText.update());
-  if(!nextPlayerWindow.active)
+  if(!gameStartWindow.active)
   {
-    players[activePlayer].newPos();
-    bulletsArray.forEach(bullet => bullet.update());
-    explosionsArray.forEach(explosion => explosion.update());
-    // if(mouseOverButton == "none")
-    // {
+    players.forEach(player => player.update());
+    toastTextArray.forEach(toastText => toastText.update());
+    if(!nextPlayerWindow.active)
+    {
+      players[activePlayer].newPos();
+      bulletsArray.forEach(bullet => bullet.update());
+      explosionsArray.forEach(explosion => explosion.update());
       drawShootSpeedCone(players[activePlayer]);
-    // }
+    }
   }
   if(nextPlayerWindow.active)
   {
     nextPlayerWindow.draw();
+  }
+  if(gameStartWindow.active)
+  {
+    gameStartWindow.draw();
   }
   if(shotFired && !roundEnded)
   {

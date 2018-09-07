@@ -101,6 +101,9 @@ function buttonAction()
     case "toggle_music_muted":
       musicOn = true;
       break;
+    case "gameStart":
+      gameStartWindow.close();
+      break;
   }
   mouseOverButton = "none";
 }
@@ -111,4 +114,13 @@ function waitForRoundEnd()
   {
     roundEnded = true;
   }
+}
+
+function noWindowOpen()
+{
+  if(!gameStartWindow.active && !nextPlayerWindow.active)
+  {
+    return true;
+  }
+  return false;
 }
