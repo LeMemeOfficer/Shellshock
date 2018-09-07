@@ -90,6 +90,12 @@ function drawPlayerGui(playerId)
   var height = 80;
   var radius = 5;
   var color = players[playerId].color;
+
+  if(players[playerId].y > yPos - width)
+  {
+    yPos = CANVAS_HEIGHT / 2;
+  }
+
   drawRoundedBox(xPos, yPos, width, height, radius, color);
   writeText(myGameArea, xPos, yPos - height / 4, 15, "Oswald", players[playerId].name, "Black")
   drawBar(xPos + width / 8, yPos, 15, 60, "blue", "green", MAX_LIFE, players[playerId].life);
