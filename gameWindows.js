@@ -58,6 +58,31 @@ function gameStartScreen()
   }
 }
 
+function gameFinishedScreen()
+{
+  this.active = false;
+  this.xPos = CANVAS_WIDTH / 2;
+  this.yPos = CANVAS_HEIGHT / 2;
+  this.width = 300;
+  this.height = 150;
+  this.radius = 10;
+  this.color = "#38B95D";
+
+  this.draw = function()
+  {
+    drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
+    writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", getLastLivingPlayerName() + " won!", "Black");
+    drawButton(this.xPos, this.yPos + this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "restartGame");
+    writeText(myGameArea, this.xPos, this.yPos + this.height / 6 + 7, 20, "Oswald", "New game!", "Black");
+  }
+
+  this.activate = function()
+  {
+    this.active = true;
+  }
+}
+
+
 function drawMenuBar()
 {
   drawMenuIcon(CANVAS_WIDTH - 40, 35, icon_menu, "open_menu", 35);
