@@ -25,6 +25,8 @@ function getNextPlayer()
       getNextPlayer();
     }
   }
+  shotFired = false;
+  roundEnded = false;
 }
 
 function getNextPlayerId(currentPlayerId)

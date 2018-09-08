@@ -22,8 +22,6 @@ function nextPlayerMenu()
   this.close = function()
   {
     this.active = false;
-    shotFired = false;
-    roundEnded = false;
     getNextPlayer();
   }
 

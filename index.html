@@ -144,7 +144,14 @@ function updateGameArea()
   }
   if(roundEnded)
   {
-    nextPlayerWindow.activate(players[getNextPlayerId(activePlayer)].name);
+    if(!players[getNextPlayerId(activePlayer)].isBot)
+    {
+      nextPlayerWindow.activate(players[getNextPlayerId(activePlayer)].name);
+    }
+    else
+    {
+      getNextPlayer();
+    }
   }
 }
 </script>
