@@ -29,6 +29,7 @@ var CANVAS_WIDTH = 1000;
 var nextPlayerWindow = new nextPlayerMenu();
 var gameStartWindow = new gameStartScreen();
 var gameFinishedWindow = new gameFinishedScreen();
+var chooseGameModeWindow = new chooseGameModeScreen();
 
 var isSinglePlayer = false;
 var gameMode = BOTMODE_EASY;
@@ -132,6 +133,10 @@ function updateGameArea()
   if(gameFinishedWindow.active)
   {
     gameFinishedWindow.draw();
+  }
+  if(chooseGameModeWindow.active)
+  {
+   chooseGameModeWindow.draw();
   }
   if(shotFired && !roundEnded)
   {

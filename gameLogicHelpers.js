@@ -114,6 +114,23 @@ function buttonAction()
     case "gameStartSinglePlayer":
       isSinglePlayer = true;
       gameStartWindow.close();
+      chooseGameModeWindow.activate();
+      break;
+    case "gmEasy":
+      gameMode = BOTMODE_EASY;
+      chooseGameModeWindow.close();
+      break;
+    case "gmMedium":
+      gameMode = BOTMODE_MEDIUM;
+      chooseGameModeWindow.close();
+      break;
+    case "gmHard":
+      gameMode = BOTMODE_HARD;
+      chooseGameModeWindow.close();
+      break;
+    case "gmImpossible":
+      gameMode = BOTMODE_IMPOSSIBLE;
+      chooseGameModeWindow.close();
       break;
     case "restartGame":
       location = location;

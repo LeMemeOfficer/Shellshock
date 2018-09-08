@@ -60,6 +60,45 @@ function gameStartScreen()
   }
 }
 
+function chooseGameModeScreen()
+{
+  this.active = false;
+  this.xPos = CANVAS_WIDTH / 2;
+  this.yPos = CANVAS_HEIGHT / 2;
+  this.width = 300;
+  this.height = 300;
+  this.radius = 10;
+  this.color = "#38B95D";
+
+  this.draw = function()
+  {
+    drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
+    writeText(myGameArea, this.xPos, this.yPos - this.height / 6 * 2, 35, "Oswald", "Choose game mode!", "Black");
+
+    drawButton(this.xPos, this.yPos - this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gmEasy");
+    writeText(myGameArea, this.xPos, this.yPos - this.height / 6 + 7, 20, "Oswald", "Easy", "Black");
+
+    drawButton(this.xPos, this.yPos, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gmMedium");
+    writeText(myGameArea, this.xPos, this.yPos + 7, 20, "Oswald", "Medium", "Black");
+
+    drawButton(this.xPos, this.yPos + this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gmHard");
+    writeText(myGameArea, this.xPos, this.yPos + this.height / 6 + 7, 20, "Oswald", "Hard", "Black");
+
+    drawButton(this.xPos, this.yPos + this.height / 6 * 2, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "gmImpossible");
+    writeText(myGameArea, this.xPos, this.yPos + this.height / 6 * 2 + 7, 20, "Oswald", "Impossible", "Black");
+  }
+
+  this.activate = function()
+  {
+    this.active = true;
+  }
+
+  this.close = function()
+  {
+    this.active = false;
+  }
+}
+
 function gameFinishedScreen()
 {
   this.active = false;
