@@ -3,6 +3,11 @@ var MAX_MOVEMENT = 100;
 var MAX_LIFE = 100;
 var OFFSET_GROUND = 10;
 var OFFSET_WALL = 10;
+
+var BOTMODE_EASY = 0.75;
+var BOTMODE_MEDIUM = 0.5;
+var BOTMODE_HARD = 0.25;
+var BOTMODE_IMPOSSIBLE = 0;
 //--------------------PARAMETER--------------------
 
 function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg, cannonImg, color, possibleBot)
@@ -101,12 +106,14 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
       if(!shotFired)
       {
         var targetPlayer = getRandomInt(0, players.length);
-        while(targetPlayer == this.id || players[targetPlayer].life <= 0)
+        while(!players[targetPlayer].isBot || players[targetPlayer].life <= 0)
         {
           targetPlayer = getRandomInt(0, players.length);
         }
-        var shotX = getRandomInt((players[targetPlayer].x - this.x) / 16, (players[targetPlayer].x - this.x) / 32);
-        var shotY = getRandomInt(-10, -30);
+        targetPlayer = 0;
+        var shotY = getRandomInt(-20, -40);
+        var perfectShot = (this.x - players[targetPlayer].x) / (shotY / GRAVITY * 2);
+        var shotX = getRandomInt(perfectShot * (1 - gameMode), perfectShot * (1 + gameMode));
         newBullet = new bullet(this.x, this.y, shotX, shotY);
         bulletsArray.push(newBullet);
         shotFired = true;
