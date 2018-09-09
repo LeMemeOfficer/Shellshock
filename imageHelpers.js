@@ -52,6 +52,9 @@ icon_life.src = "images/icons/life_icon.png"
 
 var icon_feul = new Image();
 icon_feul.src = "images/icons/feul_icon.png"
+
+var Doodle_Panzers_Logo = new Image();
+Doodle_Panzers_Logo.src = "images/icons/Doodle_Panzers_Logo.png"
 //--------------------LOAD IMAGES--------------------
 
 function drawImageCentered(canvas, xPos, yPos, image)
