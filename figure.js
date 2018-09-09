@@ -55,7 +55,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     this.angle = calcTilt(groundHeight);
     var cannonAngle = getAngle([this.x, this.y], [mousePosition[0], mousePosition[1]]);
 
-    writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name);
+    writeText(myGameArea, this.x, this.y -20, 12, "Arial", this.name, "black");
 
     //draw tank
     if(this.life > 0)

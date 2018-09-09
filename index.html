@@ -122,7 +122,10 @@ function updateGameArea()
       players[activePlayer].newPos();
       bulletsArray.forEach(bullet => bullet.update());
       explosionsArray.forEach(explosion => explosion.update());
-      drawShootSpeedCone(players[activePlayer]);
+      if(!(isSinglePlayer && players[activePlayer].isBot))
+      {
+        drawShootSpeedCone(players[activePlayer]);
+      }
     }
   }
   if(numberPlayersLeft() == 1)
