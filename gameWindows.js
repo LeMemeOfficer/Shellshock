@@ -150,7 +150,7 @@ function menuScreen()
     writeText(myGameArea, this.xPos, this.yPos + 7, 20, "Oswald", "New game!", "Black");
 
     drawButton(this.xPos, this.yPos + this.height / 4, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "closeMenu");
-    writeText(myGameArea, this.xPos, this.yPos + this.height / 4 + 7, 20, "Oswald", "Close Menu!", "Black");
+    writeText(myGameArea, this.xPos, this.yPos + this.height / 4 + 7, 20, "Oswald", "Close menu!", "Black");
   }
 
   this.activate = function()
