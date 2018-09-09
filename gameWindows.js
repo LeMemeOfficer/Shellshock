@@ -107,6 +107,8 @@ function gameFinishedScreen()
   this.radius = 10;
   this.color = "#38B95D";
 
+  this.soundPlayed = false;
+
   this.draw = function()
   {
     drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
@@ -118,6 +120,11 @@ function gameFinishedScreen()
   this.activate = function()
   {
     this.active = true;
+    if(!this.soundPlayed && soundOn)
+    {
+      sound_round_ended.play();
+      this.soundPlayed = true;
+    }
   }
 }
 

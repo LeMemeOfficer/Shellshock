@@ -35,6 +35,10 @@ document.addEventListener('mousedown', function(event)
   {
     if(noWindowOpen() && !shotFired && mouseOverButton == "none" && !(isSinglePlayer && players[activePlayer].isBot))
     {
+      if(soundOn)
+      {
+        sound_shot.play();
+      }
       newBullet = new bullet(players[activePlayer].x, players[activePlayer].y,
         (mousePosition[0] - players[activePlayer].x) / 8,
         (mousePosition[1] - players[activePlayer].y) / 8);

@@ -1,4 +1,4 @@
-function explosionAnimation(xPos, yPos)
+function explosionAnimation(xPos, yPos, explosionType)
 {
   this.id = explosionId.getNextId();
 
@@ -6,7 +6,7 @@ function explosionAnimation(xPos, yPos)
   this.xPos = xPos;
   this.yPos = yPos;
 
-  this.explosionType = Math.floor(Math.random() * 3);
+  this.explosionType = explosionType;
 
   this.existenceTimeCounter = 0;
 

@@ -86,10 +86,14 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     {
       this.speedX = speed;
       this.movementCounter++;
+      if(soundOn)
+      {
+        sound_motor.play();
+      }
     }
     else
     {
-      this.speedX = 0;
+      this.stopHorizontal();
     }
   }
 
@@ -97,15 +101,21 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
   {
     if(this.currMovement > 0)
     {
-      this.speedX = -PLAYER_SPEED;
+      this.moveHorizontal(-PLAYER_SPEED);
       this.currMovement--;
     }
     else
     {
-      this.speedX = 0;
+      this.stopHorizontal();
       if(!shotFired)
       {
-        var targetPlayer = getRandomInt(0, players.length);
+        //play shot sound
+        if(soundOn)
+        {
+          sound_shot.play();
+        }
+
+        var targetPlayer = getRandomInt(0, players.length -1);
         while(!players[targetPlayer].isBot || players[targetPlayer].life <= 0)
         {
           targetPlayer = getRandomInt(0, players.length);
@@ -124,6 +134,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
   this.stopHorizontal = function()
   {
     this.speedX = 0;
+    sound_motor.stop();
   }
 
   this.gotHit = function(damage)

@@ -34,8 +34,17 @@ function explode(xPos, yPos, radius)
     players[hitPlayer].gotHit(damage);
   }
 
+  //choose explosion type
+  var explosionType = Math.floor(Math.random() * 3);
+
+  //play explosion sound
+  if(soundOn)
+  {
+    playExplosionSound(explosionType);
+  }
+
   //draw explosion
-  newExplosion = new explosionAnimation(xPos, yPos);
+  newExplosion = new explosionAnimation(xPos, yPos, explosionType);
   explosionsArray.push(newExplosion);
 
   //Area to check if in explosion
