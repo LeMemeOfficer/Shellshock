@@ -12,7 +12,7 @@ function hitDetection(bombPos, explosionRadius)
   {
     if(getDistance(bombPos, [player.x, player.y]) <= explosionRadius * 2)
     {
-      buffer[player.id] = 50;
+      buffer[player.id] = 25;
     }
     else
     {
