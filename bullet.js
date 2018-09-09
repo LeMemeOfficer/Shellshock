@@ -24,7 +24,7 @@ function bullet(xPos, yPos, horizontalSpeed, verticalSpeed)
 
     this.yPos += this.verticalSpeed;
     this.xPos += this.horizontalSpeed;
-    console.log(this.horizontalSpeed);
+    
     //calulate how many steps to check inbetween two frames
     if(!inBetween(this.horizontalSpeed, -1, 1))
     {

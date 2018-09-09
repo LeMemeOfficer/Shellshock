@@ -113,7 +113,14 @@ function gameFinishedScreen()
   this.draw = function()
   {
     drawRoundedBox(this.xPos, this.yPos, this.width, this.height, this.radius, this.color);
-    writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", getLastLivingPlayerName() + " won!", "Black");
+    if(!(players[getLastLivingPlayerId()].isBot && isSinglePlayer))
+    {
+      writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", players[getLastLivingPlayerId()].name + " won!", "Black");
+    }
+    else
+    {
+      writeText(myGameArea, this.xPos, this.yPos - this.height / 8, 35, "Oswald", "You lost :(", "Black");
+    }
     drawButton(this.xPos, this.yPos + this.height / 6, 160, 40, 0, "#6AB9DF", "#3A9CCC", "black", "restartGame");
     writeText(myGameArea, this.xPos, this.yPos + this.height / 6 + 7, 20, "Oswald", "New game!", "Black");
   }
@@ -123,7 +130,14 @@ function gameFinishedScreen()
     this.active = true;
     if(!this.soundPlayed && soundOn)
     {
-      sound_round_ended.play();
+      if(players[getLastLivingPlayerId()].isBot && isSinglePlayer)
+      {
+        sound_ohNo.play();
+      }
+      else
+      {
+        sound_round_ended.play();
+      }
       this.soundPlayed = true;
     }
   }

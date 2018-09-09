@@ -38,7 +38,6 @@ function explode(xPos, yPos, radius)
   yPos = Math.floor(yPos);
 
   var hitInfo = hitDetection([xPos, yPos], radius);
-  console.log(hitInfo);
   for(i = 0; i < hitInfo.length; i++)
   {
     if(hitInfo[i] > 0)

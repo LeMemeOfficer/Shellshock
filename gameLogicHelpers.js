@@ -182,7 +182,7 @@ function numberPlayersLeft()
   return livingPlayers;
 }
 
-function getLastLivingPlayerName()
+function getLastLivingPlayerId()
 {
   if(numberPlayersLeft() == 1)
   {
@@ -190,7 +190,7 @@ function getLastLivingPlayerName()
     {
       if(players[i].life > 0)
       {
-        return players[i].name;
+        return players[i].id;
       }
     }
   }
