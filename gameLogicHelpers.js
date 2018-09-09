@@ -145,6 +145,9 @@ function buttonAction()
     case "restartGame":
       location.reload();
       break;
+    case "closeMenu":
+      menuWindow.close();
+      break;
   }
   mouseOverButton = "none";
 }
