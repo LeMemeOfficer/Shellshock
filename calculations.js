@@ -26,3 +26,12 @@ function getRandomNear(number, variance)
 {
   return getRandomInt(number - variance, number + variance);
 }
+
+function strToBool(string)
+{
+  if(string == "true")
+  {
+    return true;
+  }
+  return false;
+}
