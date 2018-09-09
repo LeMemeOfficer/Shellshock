@@ -20,6 +20,15 @@ function hitDetection(bombPos, explosionRadius)
   return buffer;
 }
 
+function coordUnderGround(xPos, yPos)
+{
+  if(yPos >= CANVAS_HEIGHT - ground.groundMatrix[Math.floor(xPos / 2)])
+  {
+    return true;
+  }
+  return false;
+}
+
 function explode(xPos, yPos, radius)
 {
   xPos = Math.floor(xPos);

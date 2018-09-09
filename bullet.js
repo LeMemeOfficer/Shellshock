@@ -18,15 +18,37 @@ function bullet(xPos, yPos, horizontalSpeed, verticalSpeed)
   this.update = function()
   {
     this.verticalSpeed += GRAVITY;
+
+    var prevX = this.xPos;
+    var prevY = this.yPos;
+
     this.yPos += this.verticalSpeed;
     this.xPos += this.horizontalSpeed;
 
-    //If Bullet is under ground level or out of canvas
-    if(this.yPos >= CANVAS_HEIGHT - ground.groundMatrix[Math.floor(this.xPos / 2)] ||
-       this.yPos >= CANVAS_HEIGHT)
+    //calulate how many steps to check inbetween two frames
+    var timesToCheckBetween = (Math.floor(this.xPos - prevX));
+    var positiveAgain = 1;
+    if(timesToCheckBetween < 0)
     {
-      explode(this.xPos, this.yPos, 26);
-      removeBullet(this.id);
+      timesToCheckBetween *= -1;
+      positiveAgain *= -1;
+    }
+
+    //calctulate steps between y coordinates
+    var ySteps = (this.yPos - prevY) / timesToCheckBetween;
+    for(i = 1; i <= timesToCheckBetween; i ++)
+    {
+      currXPos = (prevX + i * positiveAgain);
+      currYPos =  prevY + ySteps * i;
+      if(coordUnderGround(currXPos, currYPos) ||
+         !inBetween(currXPos, 0, CANVAS_WIDTH) ||
+         currYPos > CANVAS_HEIGHT)
+      {
+        drawCircle(groundCanvas.context, (prevX + i * positiveAgain), prevY + ySteps * i, 6, "black");
+        explode((prevX + i * positiveAgain), prevY + ySteps * i, 26);
+        removeBullet(this.id);
+        break;
+      }
     }
     this.drawBullet();
   }
