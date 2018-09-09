@@ -144,13 +144,13 @@ function updateGameArea()
   }
   if(roundEnded)
   {
-    if(!players[getNextPlayerId(activePlayer)].isBot)
+    if(players[getNextPlayerId(activePlayer)].isBot && isSinglePlayer)
     {
-      nextPlayerWindow.activate(players[getNextPlayerId(activePlayer)].name);
+      getNextPlayer();
     }
     else
     {
-      getNextPlayer();
+      nextPlayerWindow.activate(players[getNextPlayerId(activePlayer)].name);
     }
   }
 }

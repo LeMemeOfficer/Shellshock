@@ -1,5 +1,5 @@
 //--------------------PARAMETER--------------------
-var MAX_MOVEMENT = 100;
+var MAX_MOVEMENT = 50;
 var MAX_LIFE = 100;
 var OFFSET_GROUND = 10;
 var OFFSET_WALL = 10;

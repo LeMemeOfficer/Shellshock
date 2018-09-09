@@ -3,6 +3,7 @@ function removeBullet(idOfBulletToRemove)
   bulletsArray = bulletsArray.filter(bullet => bullet.id != idOfBulletToRemove);
 }
 
+// Gibt nur letzten Spieler zurück, array an [0] und abfragen ob Array leer?
 function hitDetection(bombPos, explosionRadius)
 {
   var buffer = [-1, 0];
