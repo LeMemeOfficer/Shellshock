@@ -100,19 +100,19 @@ function buttonAction()
       break;
     case "toggle_sound":
       soundOn = false;
-      localStorage.setItem("soundOn", soundOn);
+      sessionStorage.setItem("soundOn", soundOn);
       break;
     case "toggle_music":
       musicOn = false;
-      localStorage.setItem("musicOn", musicOn);
+      sessionStorage.setItem("musicOn", musicOn);
       break;
     case "toggle_sound_muted":
       soundOn = true;
-      localStorage.setItem("soundOn", soundOn);
+      sessionStorage.setItem("soundOn", soundOn);
       break;
     case "toggle_music_muted":
       musicOn = true;
-      localStorage.setItem("musicOn", musicOn);
+      sessionStorage.setItem("musicOn", musicOn);
       break;
     case "gameStart":
       gameStartWindow.close();

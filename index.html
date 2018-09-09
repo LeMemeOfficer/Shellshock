@@ -39,8 +39,8 @@ var mouseOverButton = "none";
 var shotFired = false;
 var roundEnded = false;
 
-var soundOn = strToBool(localStorage.getItem("soundOn"));
-var musicOn = strToBool(localStorage.getItem("musicOn"));
+var soundOn = strToBool(sessionStorage.getItem("soundOn"));
+var musicOn = strToBool(sessionStorage.getItem("musicOn"));
 
 var bulletsArray = [];
 var bulletId = new counter();
@@ -101,7 +101,6 @@ var groundCanvas = {
 
 function updateGameArea()
 {
-  console.log(localStorage.getItem("soundOn"));
   myGameArea.clear();
   if(players[activePlayer].isBot && isSinglePlayer)
   {

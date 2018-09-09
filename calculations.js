@@ -29,9 +29,9 @@ function getRandomNear(number, variance)
 
 function strToBool(string)
 {
-  if(string == "true")
+  if(string == "false")
   {
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
