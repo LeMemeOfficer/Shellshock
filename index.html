@@ -31,6 +31,7 @@ var nextPlayerWindow = new nextPlayerMenu();
 var gameStartWindow = new gameStartScreen();
 var gameFinishedWindow = new gameFinishedScreen();
 var chooseGameModeWindow = new chooseGameModeScreen();
+var menuWindow = new menuScreen();
 
 var isSinglePlayer = false;
 var gameMode = BOTMODE_EASY;
@@ -142,7 +143,11 @@ function updateGameArea()
   }
   if(chooseGameModeWindow.active)
   {
-   chooseGameModeWindow.draw();
+    chooseGameModeWindow.draw();
+  }
+  if(menuWindow.active)
+  {
+    menuWindow.draw();
   }
   if(shotFired && !roundEnded)
   {

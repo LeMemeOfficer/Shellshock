@@ -115,6 +115,9 @@ function buttonAction()
       musicOn = true;
       sessionStorage.setItem("musicOn", musicOn);
       break;
+    case "open_menu":
+      menuWindow.activate();
+      break;
     case "gameStart":
       gameStartWindow.close();
       break;
