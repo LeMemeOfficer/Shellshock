@@ -6,14 +6,13 @@ function removeBullet(idOfBulletToRemove)
 // Gibt nur letzten Spieler zurück, array an [0] und abfragen ob Array leer?
 function hitDetection(bombPos, explosionRadius)
 {
-  var buffer = [-1, 0];
+  var buffer = [];
 
   players.forEach(player =>
   {
     if(getDistance(bombPos, [player.x, player.y]) <= explosionRadius * 2)
     {
-      buffer[0] = player.id;
-      buffer[1] = 50;
+      buffer[player.id] = 50;
     }
   });
 
@@ -35,12 +34,9 @@ function explode(xPos, yPos, radius)
   yPos = Math.floor(yPos);
 
   var hitInfo = hitDetection([xPos, yPos], radius);
-  var hitPlayer = hitInfo[0];
-  var damage = hitInfo[1];
-
-  if(hitPlayer != -1)
+  for(i = 0; i < hitInfo.length; i++)
   {
-    players[hitPlayer].gotHit(damage);
+    players[i].gotHit(hitInfo[i]);
   }
 
   //choose explosion type
