@@ -159,7 +159,7 @@ function waitForRoundEnd()
 
 function noWindowOpen()
 {
-  if(!gameStartWindow.active && !nextPlayerWindow.active)
+  if(!gameStartWindow.active && !nextPlayerWindow.active && !gameFinishedWindow.active && !chooseGameModeWindow.active && !menuWindow.active)
   {
     return true;
   }

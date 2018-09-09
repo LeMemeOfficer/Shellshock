@@ -99,34 +99,37 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
 
   this.botMove = function()
   {
-    if(this.currMovement > 0)
+    if(noWindowOpen())
     {
-      this.moveHorizontal(-PLAYER_SPEED);
-      this.currMovement--;
-    }
-    else
-    {
-      this.stopHorizontal();
-      if(!shotFired)
+      if(this.currMovement > 0)
       {
-        //play shot sound
-        if(soundOn)
+        this.moveHorizontal(-PLAYER_SPEED);
+        this.currMovement--;
+      }
+      else
+      {
+        this.stopHorizontal();
+        if(!shotFired)
         {
-          sound_shot.play();
-        }
+          //play shot sound
+          if(soundOn)
+          {
+            sound_shot.play();
+          }
 
-        var targetPlayer = getRandomInt(0, players.length -1);
-        while(!players[targetPlayer].isBot || players[targetPlayer].life <= 0)
-        {
-          targetPlayer = getRandomInt(0, players.length);
+          var targetPlayer = getRandomInt(0, players.length -1);
+          while(!players[targetPlayer].isBot || players[targetPlayer].life <= 0)
+          {
+            targetPlayer = getRandomInt(0, players.length);
+          }
+          targetPlayer = 0;
+          var shotY = getRandomInt(-20, -40);
+          var perfectShot = (this.x - players[targetPlayer].x) / (shotY / GRAVITY * 2);
+          var shotX = getRandomInt(perfectShot * (1 - gameMode), perfectShot * (1 + gameMode));
+          newBullet = new bullet(this.x, this.y, shotX, shotY);
+          bulletsArray.push(newBullet);
+          shotFired = true;
         }
-        targetPlayer = 0;
-        var shotY = getRandomInt(-20, -40);
-        var perfectShot = (this.x - players[targetPlayer].x) / (shotY / GRAVITY * 2);
-        var shotX = getRandomInt(perfectShot * (1 - gameMode), perfectShot * (1 + gameMode));
-        newBullet = new bullet(this.x, this.y, shotX, shotY);
-        bulletsArray.push(newBullet);
-        shotFired = true;
       }
     }
   }

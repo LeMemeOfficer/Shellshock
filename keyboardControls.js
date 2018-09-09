@@ -2,7 +2,7 @@ var pressedKeys = [];
 
 document.addEventListener('keydown', function(event)
 {
-  if(!(isSinglePlayer && players[activePlayer].isBot))
+  if(!(isSinglePlayer && players[activePlayer].isBot) && noWindowOpen())
   {
     if(!pressedKeys.includes(event.keyCode))
     {
