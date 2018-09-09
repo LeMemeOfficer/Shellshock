@@ -14,6 +14,10 @@ function hitDetection(bombPos, explosionRadius)
     {
       buffer[player.id] = 50;
     }
+    else
+    {
+      buffer[player.id] = 0;
+    }
   });
 
   return buffer;
@@ -34,9 +38,13 @@ function explode(xPos, yPos, radius)
   yPos = Math.floor(yPos);
 
   var hitInfo = hitDetection([xPos, yPos], radius);
+  console.log(hitInfo);
   for(i = 0; i < hitInfo.length; i++)
   {
-    players[i].gotHit(hitInfo[i]);
+    if(hitInfo[i] > 0)
+    {
+      players[i].gotHit(hitInfo[i]);
+    }
   }
 
   //choose explosion type
