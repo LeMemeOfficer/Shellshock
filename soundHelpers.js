@@ -4,6 +4,8 @@ sound_pow = new sound("sounds/sound_pow.wav");
 sound_shot = new sound("sounds/sound_shot.wav");
 sound_motor = new sound("sounds/sound_motor.wav");
 sound_round_ended = new sound("sounds/sound_round_ended.wav");
+music = new sound("sounds/music.wav");
+music.setVolume(0.4);
 
 function sound(src) {
     this.sound = document.createElement("audio");
@@ -17,6 +19,10 @@ function sound(src) {
     }
     this.stop = function(){
         this.sound.pause();
+    }
+    this.setVolume = function()
+    {
+      this.sound.volume = 0.2;
     }
 }
 

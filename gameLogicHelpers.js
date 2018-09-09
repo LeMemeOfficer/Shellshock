@@ -104,6 +104,7 @@ function buttonAction()
       break;
     case "toggle_music":
       musicOn = false;
+      music.stop();
       sessionStorage.setItem("musicOn", musicOn);
       break;
     case "toggle_sound_muted":

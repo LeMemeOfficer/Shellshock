@@ -101,6 +101,10 @@ var groundCanvas = {
 
 function updateGameArea()
 {
+  if(musicOn)
+  {
+    music.play();
+  }
   myGameArea.clear();
   if(players[activePlayer].isBot && isSinglePlayer)
   {
