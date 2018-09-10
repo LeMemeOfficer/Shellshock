@@ -2,8 +2,11 @@
 
 ## Allegemeins
 **Autor:** Ozan Arslan
+
 **Erstelldatum:** 10.09.2018
+
 **Version:** 1.0
+
 Doodle Panzers ist eine kreative Nachbildung des "Shellshock Live" im Rahmen eines Uni-Projektes.
 Es handelt sich um ein Rundenbasiertes 2D-Strategiespiel im kindlichen doodel-stiel. Hierbei treten zwei Panzer gegeneinander an und müssen sich mit explosieven Geschossen auf einem zerstörbaren Boden abschießen
 ## Installation und Start der Anwendung
