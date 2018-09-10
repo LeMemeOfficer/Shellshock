@@ -32,7 +32,15 @@ Chrome Version 69.0.3497.81
 Internet Explorer
 ## Bekannte Fehler
 1) Wenn beide Spieler gleichzeitig sterben, also zu keinen Zeitpunkt nur ein Spieler lebt, endet das Spiel nicht.
+2) Wenn beide Spieler zu nah beieinander sind, überlappen sich ihre Interfaces
+3) Bots können nicht nach rechts fahren
 ## Lizenz
 Standard MIT Lizenz
 ## Externe Ressourcen
-Oswald Font - Vernon Adams, Quelle: https://fonts.google.com/specimen/Oswald
+Oswald Font - Vernon Adams
+- Lizenz: Copyright 2016 The Oswald Project Authors (https://github.com/googlefonts/OswaldFont)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+- Quelle: https://fonts.google.com/specimen/Oswald
