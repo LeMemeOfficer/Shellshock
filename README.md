@@ -14,7 +14,8 @@ Dateien in einen beliebigen Ordner entpacken und index.html öffnen
 ## Steurung
 ### Im Anfangsmenü
 Zuerst muss ausgewählt werden, ob man alleine (Singleplayer) oder zu zweit (Multiplayer) spielen will.
-Klickt man auf Multiplayer, starter das spiel sofort im Multiplayer
+Klickt man auf Multiplayer, starter das spiel sofort im Multiplayer.
+
 Wählt man Singleplayer aus, kann man noch einen Schwierigkeitsgrad auswählen. Zur Wahl stehen "easy", "medium", "hard" und "impossible". Diese beeinflussen die Treffsicherheit des Bots, gegen den gespielt wird.
 ### Ein- und Ausschalten von Sound und Musik
 Um Sounds und Musik ein- oder auszuschalten, kann oben rechts im Spiel auf das Lautsprechersymbol (Sounds) und auf das Musiknotensymbol (Musik) geklickt werden.
@@ -24,12 +25,14 @@ Mit den Tasten "A" und "D" kann der Panzer nach links oder rechts bewegt werden.
 #### Schießen
 Geschossen wird durch einen Linksklick auf einen beliebegen Bereich auf der Seite. Hierbei wird die Schusstärke und der Winkel durch einen Indikatorkegel an der Spitze des Schussrohres des Panzers angezeigt. Diese werden durch die relative Postion des Cursors zum aktiven Panzer bestimmt.
 Pro Zug kann nur einmal geschossen werden und der Zug endet mit dem explodieren des Geschosses.
+
 Fällt das Leben eines Spielers auf 0 (Balken mit Herzsymbol unter dem Spieler) ist dieser tot. Ist nur noch ein Spieler übrig, gewinnt dieser.
 ## Verwendete Technologien
 Javascript, HTML5 und CSS
 ## Browserkompatibilität
 ### Getestet
 Firefox Version 62.0
+
 Chrome Version 69.0.3497.81
 ### Funktioniert nicht in:
 Internet Explorer
