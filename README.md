@@ -34,6 +34,10 @@ Javascript, HTML5 und CSS
 Firefox Version 62.0
 
 Chrome Version 69.0.3497.81
+
+Safari Version 11.1.2
+
+Opera Version 55.0.2994.56
 ### Funktioniert nicht in:
 Internet Explorer
 ## Bekannte Fehler
