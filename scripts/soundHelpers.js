@@ -1,11 +1,11 @@
-sound_baem = new sound("sounds/sound_baem.wav");
-sound_boom = new sound("sounds/sound_boom.wav");
-sound_pow = new sound("sounds/sound_pow.wav");
-sound_shot = new sound("sounds/sound_shot.wav");
-sound_motor = new sound("sounds/sound_motor.wav");
-sound_round_ended = new sound("sounds/sound_round_ended.wav");
-sound_ohNo = new sound("sounds/sound_ohNo.wav");
-music = new sound("sounds/music.wav");
+sound_baem = new sound("../sounds/sound_baem.wav");
+sound_boom = new sound("../sounds/sound_boom.wav");
+sound_pow = new sound("../sounds/sound_pow.wav");
+sound_shot = new sound("../sounds/sound_shot.wav");
+sound_motor = new sound("../sounds/sound_motor.wav");
+sound_round_ended = new sound("../sounds/sound_round_ended.wav");
+sound_ohNo = new sound("../sounds/sound_ohNo.wav");
+music = new sound("../sounds/music.wav");
 music.setVolume(0.4);
 
 function sound(src) {
