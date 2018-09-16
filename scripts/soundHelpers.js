@@ -27,6 +27,14 @@ function sound(src) {
     }
 }
 
+function playSound(sound)
+{
+  if(soundOn)
+  {
+    sound.play();
+  }
+}
+
 function playExplosionSound(type)
 {
   switch (type) {

@@ -61,12 +61,8 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     if(this.life > 0)
     {
       drawBarrel(myGameArea, this.x, this.y, this.cannon, this.width / 1.5, this.height / 1.5, cannonAngle);
-      drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width, this.height, this.angle);
     }
-    else
-    {
-      drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.width * 1.3, this.height * 1.3, this.angle);
-    }
+    drawImageCenteredAndScaledAndRotated(myGameArea, this.x, this.y, this.body, this.body.width / 2, this.body.height / 2, this.angle);
   }
 
   this.newPos = function()
@@ -86,10 +82,7 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
     {
       this.speedX = speed;
       this.movementCounter++;
-      if(soundOn)
-      {
-        sound_motor.play();
-      }
+      playSound(sound_motor);
     }
     else
     {
@@ -111,24 +104,15 @@ function figure(width, height, angle, x, y, keyLeft, keyRight, id, name, tankImg
         this.stopHorizontal();
         if(!shotFired)
         {
-          //play shot sound
-          if(soundOn)
-          {
-            sound_shot.play();
-          }
+          playSound(sound_shot);
+          shotFired = true;
 
-          var targetPlayer = getRandomInt(0, players.length -1);
-          while(!players[targetPlayer].isBot || players[targetPlayer].life <= 0)
-          {
-            targetPlayer = getRandomInt(0, players.length);
-          }
-          targetPlayer = 0;
+          var targetPlayer = getTargetPlayer();
           var shotY = getRandomInt(-20, -40);
           var perfectShot = (this.x - players[targetPlayer].x) / (shotY / GRAVITY * 2);
           var shotX = getRandomInt(perfectShot * (1 - gameMode), perfectShot * (1 + gameMode));
           newBullet = new bullet(this.x, this.y, shotX, shotY);
           bulletsArray.push(newBullet);
-          shotFired = true;
         }
       }
     }

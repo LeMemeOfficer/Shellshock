@@ -1,0 +1,5 @@
+remove barrel following on inactive player
+add screen (enemy count)
+add feature: naming tanks
+responsive scaling of map
+
