@@ -1,5 +1,14 @@
+add wind feature
 remove barrel following on inactive player
 add screen (enemy count)
 add feature: naming tanks
 responsive scaling of map
-
+schussst�rke limitieren
+ki sollte auch nach rechts fahren
+h�gligere maps
+bug: wenn alle tot kein gewinner.
+schusst�rek und winkel einbehalten (als indikator).
+Schissen �ber button / maus nur zum schuss justieren.
+Bug: panzer schiessen sich selbst ab, wenn vor ihnen ne wand ist
+Wenn man nach oben schie�t, wird man sofort getroffen.
+Bug: wenn man bis zum ende seiner Runde sich bewegt, bewegt man sich in seiner runde dauerhaft weiter und verbraucht keinen spritt.
